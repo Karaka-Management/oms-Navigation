@@ -12,7 +12,7 @@
  */
 declare(strict_types=1);
 
-namespace Modules\Navigation;
+namespace Modules\Navigation\Controller;
 
 use Modules\Navigation\Models\Navigation;
 use Modules\Navigation\Models\NavigationType;
@@ -31,59 +31,8 @@ use phpOMS\Module\WebInterface;
  * @link       http://website.orange-management.de
  * @since      1.0.0
  */
-final class Controller extends ModuleAbstract implements WebInterface
+class BackendController extends Controller
 {
-
-    /**
-     * Module path.
-     *
-     * @var string
-     * @since 1.0.0
-     */
-    public const MODULE_PATH = __DIR__;
-
-    /**
-     * Module version.
-     *
-     * @var string
-     * @since 1.0.0
-     */
-    public const MODULE_VERSION = '1.0.0';
-
-    /**
-     * Module name.
-     *
-     * @var string
-     * @since 1.0.0
-     */
-    public const MODULE_NAME = 'Navigation';
-
-    /**
-     * Module id.
-     *
-     * @var int
-     * @since 1.0.0
-     */
-    public const MODULE_ID = 1000500000;
-
-    /**
-     * Providing.
-     *
-     * @var string[]
-     * @since 1.0.0
-     */
-    protected static $providing = [
-    ];
-
-    /**
-     * Dependencies.
-     *
-     * @var string[]
-     * @since 1.0.0
-     */
-    protected static $dependencies = [
-    ];
-
     /**
      * Create mid navigation
      *
@@ -154,7 +103,7 @@ final class Controller extends ModuleAbstract implements WebInterface
                 continue;
             }
 
-            $path = __DIR__ . '/../..' . $path . '.' . $response->getHeader()->getL11n()->getLanguage() . '.lang.php';
+            $path = __DIR__ . '/../../..' . $path . '.' . $response->getHeader()->getL11n()->getLanguage() . '.lang.php';
 
             /** @noinspection PhpIncludeInspection */
             $lang = include $path;
