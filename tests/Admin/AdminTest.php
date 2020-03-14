@@ -12,7 +12,7 @@
  */
 declare(strict_types=1);
 
-namespace Modules\tests\Navigation\Admin;
+namespace Modules\Navigation\tests\Admin;
 
 use Modules\Admin\Models\AccountMapper;
 use Modules\Navigation\Models\Navigation;

@@ -12,7 +12,7 @@
  */
 declare(strict_types=1);
 
-namespace Modules\tests\Navigation\Views;
+namespace Modules\Navigation\tests\Views;
 
 use Modules\Navigation\Views\NavigationView;
 
