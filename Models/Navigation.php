@@ -90,7 +90,7 @@ class Navigation
             $this->nav = [];
 
             $query = new Builder($this->dbPool->get('select'));
-            $sth = $query->select('*')
+            $sth   = $query->select('*')
                 ->from('nav')
                 ->whereIn('nav.nav_pid', $hashes)
                 ->orderBy('nav.nav_order', 'ASC')
