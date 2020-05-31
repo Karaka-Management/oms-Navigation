@@ -29,7 +29,7 @@ if (isset($this->nav[\Modules\Navigation\Models\NavigationType::CONTENT])
                 $uri = \phpOMS\Uri\UriFactory::build($link['nav_uri']);
                 echo '<li'
                     . (\stripos($uri, $uriPath) !== false ? ' class="active"' : '')
-                    . '><a href="' . $uri . '">'
+                    . '><a tabindex="0" href="' . $uri . '">'
                     . $this->getHtml($link['nav_name'], 'Navigation') . '</a>';
             }
         }
