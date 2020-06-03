@@ -15,12 +15,12 @@ declare(strict_types=1);
 namespace Modules\Navigation\Controller;
 
 use Modules\Navigation\Models\NavElementMapper;
+use Modules\Navigation\Models\Navigation;
 use phpOMS\Message\RequestAbstract;
 use phpOMS\Message\ResponseAbstract;
-use Modules\Navigation\Models\Navigation;
 use phpOMS\Model\Message\Redirect;
-use phpOMS\Uri\UriFactory;
 use phpOMS\System\MimeType;
+use phpOMS\Uri\UriFactory;
 
 /**
  * Search class.
