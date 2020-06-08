@@ -52,7 +52,7 @@ final class SearchController extends Controller
         $elements = NavElementMapper::getAll();
         $search   = \explode(' ', $request->getData('search'))[1];
 
-        $found   = null;
+        $found = null;
         foreach ($elements as $element) {
             if (empty($element->uri)) {
                 continue;
