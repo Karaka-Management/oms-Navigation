@@ -84,7 +84,7 @@ final class BackendController extends Controller
             $this->app->appName
         );
 
-        $nav = new \Modules\Navigation\Views\NavigationView($this->app->l11nManager, $request, $response);
+        $nav = new NavigationView($this->app->l11nManager, $request, $response);
         $nav->setNav($navObj->getNav());
 
         $unread = [];
