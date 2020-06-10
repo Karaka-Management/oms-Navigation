@@ -21,6 +21,7 @@ use phpOMS\Message\ResponseAbstract;
 use phpOMS\Model\Message\Redirect;
 use phpOMS\System\MimeType;
 use phpOMS\Uri\UriFactory;
+use phpOMS\Message\NotificationLevel;
 
 /**
  * Search class.
@@ -50,7 +51,7 @@ final class SearchController extends Controller
         $this->loadLanguage($request, $response, $request->getData('app'));
 
         $elements = NavElementMapper::getAll();
-        $search   = \explode(' ', $request->getData('search'))[1];
+        $search   = \strtolower(\explode(' ', $request->getData('search'))[1]);
 
         $found = null;
         foreach ($elements as $element) {
@@ -58,11 +59,11 @@ final class SearchController extends Controller
                 continue;
             }
 
-            $name = $this->app->l11nManager->getText(
+            $name = \strtolower($this->app->l11nManager->getText(
                 $response->getHeader()->getL11n()->getLanguage() ?? 'en',
                 'Navigation', '0',
                 $element->name,
-            );
+            ));
 
             if ($name === $search) {
                 $found = $element;
@@ -71,6 +72,12 @@ final class SearchController extends Controller
         }
 
         $response->getHeader()->set('Content-Type', MimeType::M_JSON . '; charset=utf-8', true);
+
+        if ($found === null) {
+            $this->fillJsonResponse($request, $response, NotificationLevel::WARNING, 'Command', 'Unknown command "' . $search . '"', $search);
+            return;
+        }
+
         $response->set($request->getUri()->__toString(), new Redirect(UriFactory::build($found->uri)));
     }
 
