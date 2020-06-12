@@ -98,10 +98,7 @@ final class Installer extends InstallerAbstract
         $navElement->permissionType    = $data['permission']['type'] ?? null;
         $navElement->permissionElement = $data['permission']['element'] ?? null;
 
-        $lastInsertID = NavElementMapper::create($navElement);
-
         foreach ($data['children'] as $link) {
-            $parent = ($link['parent'] === null ? $lastInsertID : $link['parent']);
             self::installLink($dbPool, $link);
         }
     }
