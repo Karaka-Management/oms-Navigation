@@ -60,7 +60,7 @@
             },
             "nav_order": {
                 "name": "nav_order",
-                "type": "SMALLINT",
+                "type": "INT",
                 "default": null,
                 "null": true
             },
