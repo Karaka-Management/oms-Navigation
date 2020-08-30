@@ -29,7 +29,7 @@ if (isset($this->nav[NavigationType::SIDE])) : ?>
                     <?php if (isset($parent['nav_icon'])) : ?>
                         <i class="<?= $this->printHtml($parent['nav_icon']); ?>"></i>
                     <?php endif; ?>
-                    <span><?= $this->getHtml($parent['nav_name'], 'Navigation') ?></span><i class="fa fa-chevron-right expand"></i></label>
+                    <span><?= $this->getHtml($parent['nav_name'], 'Navigation'); ?></span><i class="fa fa-chevron-right expand"></i></label>
                     <?php if (isset($this->nav[NavigationType::SIDE][LinkType::LINK])) :
                         foreach ($this->nav[NavigationType::SIDE][LinkType::LINK] as $key2 => $link) :
                             if ($link['nav_parent'] === $key) :
@@ -40,8 +40,8 @@ if (isset($this->nav[NavigationType::SIDE])) : ?>
                                 // todo: very simpleminded solution. doesn't work for root path /en/backend etc. e.g. dashboard
                                 // this also fails for urls which are not structured like a tree
                             ?>
-                                <li<?= (\count($parentUri) > 2 && \stripos($uriPath, $miniParent) !== false) ? ' class="active"' : '' ?>>
-                                    <a href="<?= $uri; ?>"><?= $this->getHtml($link['nav_name'], 'Navigation') ?></a>
+                                <li<?= (\count($parentUri) > 2 && \stripos($uriPath, $miniParent) !== false) ? ' class="active"' : ''; ?>>
+                                    <a href="<?= $uri; ?>"><?= $this->getHtml($link['nav_name'], 'Navigation'); ?></a>
                             <?php endif;
                         endforeach;
                     endif; ?>

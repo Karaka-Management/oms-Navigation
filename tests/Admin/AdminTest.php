@@ -26,6 +26,7 @@ use phpOMS\Uri\HttpUri;
 class AdminTest extends \PHPUnit\Framework\TestCase
 {
     protected const MODULE_NAME = 'Navigation';
+
     protected const URI_LOAD = '';
 
     use \Modules\tests\ModuleTestTrait;
