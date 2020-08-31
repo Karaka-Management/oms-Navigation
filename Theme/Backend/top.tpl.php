@@ -12,7 +12,6 @@
  */
 declare(strict_types=1);
 
-
 use Modules\Navigation\Models\NavigationType;
 
 /**
