@@ -33,7 +33,7 @@ if (isset($this->nav[NavigationType::SIDE])) : ?>
                     <?php if (isset($this->nav[NavigationType::SIDE][LinkType::LINK])) :
                         foreach ($this->nav[NavigationType::SIDE][LinkType::LINK] as $key2 => $link) :
                             if ($link['nav_parent'] === $key) :
-                                $uri = \phpOMS\Uri\UriFactory::build($link['nav_uri']);
+                                $uri       = \phpOMS\Uri\UriFactory::build($link['nav_uri']);
                                 $parentUri = \explode('/', $uri);
                                 \array_pop($parentUri);
                                 $miniParent = \ltrim(\implode('/', $parentUri), '/') . '/';

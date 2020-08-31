@@ -19,11 +19,11 @@ use phpOMS\Router\RouteVerb;
 return [
     '^:goto .*$' => [
         [
-            'dest' => '\Modules\Navigation\Controller\SearchController:searchGoto',
-            'verb' => RouteVerb::ANY,
+            'dest'       => '\Modules\Navigation\Controller\SearchController:searchGoto',
+            'verb'       => RouteVerb::ANY,
             'permission' => [
                 'module' => SearchController::MODULE_NAME,
-                'type'  => PermissionType::READ,
+                'type'   => PermissionType::READ,
             ],
         ],
     ],
