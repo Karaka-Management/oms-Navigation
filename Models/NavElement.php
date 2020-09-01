@@ -24,33 +24,33 @@ namespace Modules\Navigation\Models;
  */
 class NavElement
 {
-    public int $id                 = 0;
+    public int $id = 0;
 
-    public string $pid             = '';
+    public string $pid = '';
 
-    public string $name            = '';
+    public string $name = '';
 
-    public int $type               = 1;
+    public int $type = 1;
 
-    public int $subtype            = 2;
+    public int $subtype = 2;
 
-    public ?string $icon           = null;
+    public ?string $icon = null;
 
-    public ?string $uri            = null;
+    public ?string $uri = null;
 
-    public string $target          = 'self';
+    public string $target = 'self';
 
-    public ?string $action         = null;
+    public ?string $action = null;
 
-    public string $from            = '0';
+    public string $from = '0';
 
-    public int $order              = 1;
+    public int $order = 1;
 
-    public int $parent             = 0;
+    public int $parent = 0;
 
-    public ?int $permissionPerm    = null;
+    public ?int $permissionPerm = null;
 
-    public ?int $permissionType    = null;
+    public ?int $permissionType = null;
 
     public ?int $permissionElement = null;
 }

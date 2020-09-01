@@ -50,6 +50,7 @@ final class SearchController extends Controller
     {
         $this->loadLanguage($request, $response, $request->getData('app'));
 
+        /** @var \Modules\Navigation\Models\NavElement[] $elements */
         $elements = NavElementMapper::getAll();
         $search   = \strtolower(\explode(' ', $request->getData('search'))[1]);
 
