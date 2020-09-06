@@ -19,7 +19,7 @@ use \Modules\Navigation\Models\NavigationType;
  * @var \Modules\Navigation\Views\NavigationView $this
  */
 if (isset($this->nav[NavigationType::SIDE])) : ?>
-    <ul id="nav-side" class="nav" role="navigation">
+    <ul id="nav-side-inner" class="nav" role="navigation">
         <?php
         $uriPath = $this->request->getUri()->getPath();
         foreach ($this->nav[NavigationType::SIDE][LinkType::CATEGORY] as $key => $parent) : ?>
