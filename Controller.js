@@ -125,4 +125,4 @@ jsOMS.Modules.Navigation = class {
  */
 Navigation.MODULE_NAME = '1000500001';
 
-window.omsApp.moduleManager.get('Navigation').bind('nav-side');
+window.omsApp.moduleManager.get('Navigation').bind('nav-side-outer');

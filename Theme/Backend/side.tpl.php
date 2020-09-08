@@ -19,6 +19,7 @@ use \Modules\Navigation\Models\NavigationType;
  * @var \Modules\Navigation\Views\NavigationView $this
  */
 if (isset($this->nav[NavigationType::SIDE])) : ?>
+<div id="nav-side-outer">
     <ul id="nav-side-inner" class="nav" role="navigation">
         <?php
         $uriPath = $this->request->getUri()->getPath();
@@ -48,5 +49,6 @@ if (isset($this->nav[NavigationType::SIDE])) : ?>
             </ul>
         <?php endforeach; ?>
     </ul>
+</div>
 <?php
 endif;
