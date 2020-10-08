@@ -106,7 +106,7 @@ final class SearchController extends Controller
         foreach ($languages as $path) {
             $path = __DIR__ . '/../../..' . $path . '.' . $langCode . '.lang.php';
 
-            if (!\file_exists($path)) {
+            if (!\is_file($path)) {
                 continue;
             }
 
