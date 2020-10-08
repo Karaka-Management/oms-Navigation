@@ -15,7 +15,6 @@ declare(strict_types=1);
 namespace Modules\Navigation\Controller;
 
 use Modules\Navigation\Models\NavElementMapper;
-use Modules\Navigation\Models\Navigation;
 use phpOMS\Message\NotificationLevel;
 use phpOMS\Message\RequestAbstract;
 use phpOMS\Message\ResponseAbstract;
