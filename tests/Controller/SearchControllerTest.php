@@ -22,16 +22,16 @@ use phpOMS\Account\PermissionType;
 use phpOMS\Application\ApplicationAbstract;
 use phpOMS\Dispatcher\Dispatcher;
 use phpOMS\Event\EventManager;
+use phpOMS\Localization\L11nManager;
+use phpOMS\Message\Http\HttpRequest;
+use phpOMS\Message\Http\HttpResponse;
+use phpOMS\Message\Http\RequestStatusCode;
+use phpOMS\Model\Message\Redirect;
 use phpOMS\Module\ModuleAbstract;
 use phpOMS\Module\ModuleManager;
 use phpOMS\Router\WebRouter;
-use phpOMS\Utils\TestUtils;
-use phpOMS\Message\Http\HttpResponse;
-use phpOMS\Message\Http\HttpRequest;
-use phpOMS\Model\Message\Redirect;
 use phpOMS\Uri\HttpUri;
-use phpOMS\Localization\L11nManager;
-use phpOMS\Message\Http\RequestStatusCode;
+use phpOMS\Utils\TestUtils;
 
 /**
  * @testdox Modules\Navigation\tests\Controller\SearchControllerTest: Admin api controller

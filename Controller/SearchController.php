@@ -15,13 +15,13 @@ declare(strict_types=1);
 namespace Modules\Navigation\Controller;
 
 use Modules\Navigation\Models\NavElementMapper;
+use phpOMS\Message\Http\RequestStatusCode;
 use phpOMS\Message\NotificationLevel;
 use phpOMS\Message\RequestAbstract;
 use phpOMS\Message\ResponseAbstract;
 use phpOMS\Model\Message\Redirect;
 use phpOMS\System\MimeType;
 use phpOMS\Uri\UriFactory;
-use phpOMS\Message\Http\RequestStatusCode;
 
 /**
  * Search class.
