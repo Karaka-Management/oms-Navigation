@@ -1,0 +1,126 @@
+<?php
+/**
+ * Orange Management
+ *
+ * PHP Version 7.4
+ *
+ * @package   tests
+ * @copyright Dennis Eichhorn
+ * @license   OMS License 1.0
+ * @version   1.0.0
+ * @link      https://orange-management.org
+ */
+declare(strict_types=1);
+
+namespace Modules\Navigation\tests\Controller;
+
+use Model\CoreSettings;
+use Modules\Admin\Models\AccountPermission;
+use phpOMS\Account\Account;
+use phpOMS\Account\AccountManager;
+use phpOMS\Account\PermissionType;
+use phpOMS\Application\ApplicationAbstract;
+use phpOMS\Dispatcher\Dispatcher;
+use phpOMS\Event\EventManager;
+use phpOMS\Module\ModuleAbstract;
+use phpOMS\Module\ModuleManager;
+use phpOMS\Router\WebRouter;
+use phpOMS\Utils\TestUtils;
+use phpOMS\Message\Http\HttpResponse;
+use phpOMS\Message\Http\HttpRequest;
+use phpOMS\Model\Message\Redirect;
+use phpOMS\Uri\HttpUri;
+use phpOMS\Localization\L11nManager;
+use phpOMS\Message\Http\RequestStatusCode;
+
+/**
+ * @testdox Modules\Navigation\tests\Controller\SearchControllerTest: Admin api controller
+ *
+ * @internal
+ */
+class SearchControllerTest extends \PHPUnit\Framework\TestCase
+{
+    protected ApplicationAbstract $app;
+
+    /**
+     * @var \Modules\Navigation\Controller\SearchController
+     */
+    protected ModuleAbstract $module;
+
+    protected function setUp() : void
+    {
+        $this->app = new class() extends ApplicationAbstract
+        {
+            protected string $appName = 'Search';
+        };
+
+        $this->app->dbPool         = $GLOBALS['dbpool'];
+        $this->app->orgId          = 1;
+        $this->app->accountManager = new AccountManager($GLOBALS['session']);
+        $this->app->appSettings    = new CoreSettings($this->app->dbPool->get());
+        $this->app->moduleManager  = new ModuleManager($this->app, __DIR__ . '/../../../../Modules');
+        $this->app->dispatcher     = new Dispatcher($this->app);
+        $this->app->l11nManager    = new L11nManager($this->app->appName);
+        $this->app->eventManager   = new EventManager($this->app->dispatcher);
+        $this->app->eventManager->importFromFile(__DIR__ . '/../../../../Web/Api/Hooks.php');
+
+        $account = new Account();
+        TestUtils::setMember($account, 'id', 1);
+
+        $permission = new AccountPermission();
+        $permission->setUnit(1);
+        $permission->setApp('backend');
+        $permission->setPermission(
+            PermissionType::READ
+            | PermissionType::CREATE
+            | PermissionType::MODIFY
+            | PermissionType::DELETE
+            | PermissionType::PERMISSION
+        );
+
+        $account->addPermission($permission);
+
+        $this->app->accountManager->add($account);
+        $this->app->router = new WebRouter();
+
+        $this->module = $this->app->moduleManager->get('Navigation');
+
+        TestUtils::setMember($this->module, 'app', $this->app);
+    }
+
+    /**
+     * @covers Modules\Navigation\Controller\SearchController
+     * @group module
+     */
+    public function testGotoSearch() : void
+    {
+        $response = new HttpResponse();
+        $request  = new HttpRequest(new HttpUri('https://127.0.0.1/en/backend'));
+        $request->createRequestHashs(2);
+
+        $request->getHeader()->setAccount(1);
+        $request->setData('search', ':goto General');
+        $request->setData('app', 'Backend');
+
+        $this->module->searchGoto($request, $response);
+        self::assertInstanceOf(Redirect::class, $response->get('https://127.0.0.1/en/backend'));
+    }
+
+    /**
+     * @covers Modules\Navigation\Controller\SearchController
+     * @group module
+     */
+    public function testInvalidGotoSearch() : void
+    {
+        $response = new HttpResponse();
+        $request  = new HttpRequest(new HttpUri('https://127.0.0.1/en/backend'));
+        $request->createRequestHashs(0);
+
+        $request->getHeader()->setAccount(1);
+        $request->setData('search', ':goto Invalid');
+        $request->setData('app', 'Backend');
+
+        $this->module->searchGoto($request, $response);
+        self::assertEquals(RequestStatusCode::R_400, $response->getHeader()->getStatusCode());
+    }
+}

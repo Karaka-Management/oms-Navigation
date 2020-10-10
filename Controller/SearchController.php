@@ -21,6 +21,7 @@ use phpOMS\Message\ResponseAbstract;
 use phpOMS\Model\Message\Redirect;
 use phpOMS\System\MimeType;
 use phpOMS\Uri\UriFactory;
+use phpOMS\Message\Http\RequestStatusCode;
 
 /**
  * Search class.
@@ -51,7 +52,14 @@ final class SearchController extends Controller
 
         /** @var \Modules\Navigation\Models\NavElement[] $elements */
         $elements = NavElementMapper::getAll();
-        $search   = \strtolower(\explode(' ', $request->getData('search'))[1]);
+        $search   = \mb_strtolower(\substr(
+            $request->getData('search'),
+            \stripos(
+                $request->getData('search'),
+                ' ',
+                \stripos($request->getData('search'), ':')
+            ) + 1
+        ));
 
         $found = null;
         foreach ($elements as $element) {
@@ -59,7 +67,7 @@ final class SearchController extends Controller
                 continue;
             }
 
-            $name = \strtolower($this->app->l11nManager->getText(
+            $name = \mb_strtolower($this->app->l11nManager->getText(
                 $response->getHeader()->getL11n()->getLanguage() ?? 'en',
                 'Navigation', '0',
                 $element->name,
@@ -75,6 +83,8 @@ final class SearchController extends Controller
 
         if ($found === null) {
             $this->fillJsonResponse($request, $response, NotificationLevel::WARNING, 'Command', 'Unknown command "' . $search . '"', $search);
+            $response->getHeader()->setStatusCode(RequestStatusCode::R_400);
+
             return;
         }
 
@@ -95,7 +105,6 @@ final class SearchController extends Controller
      *  This should either get cached per user or maybe put into one large language file per language (like the routes).
      *
      * @since 1.0.0
-     * @codeCoverageIgnore
      */
     private function loadLanguage(RequestAbstract $request, ResponseAbstract $response, string $app) : void
     {

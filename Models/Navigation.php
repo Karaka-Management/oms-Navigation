@@ -135,15 +135,17 @@ class Navigation
      */
     private function setReadable(array &$nav, int $parent) : void
     {
-        if (isset($nav[$parent])) {
-            $nav[$parent][0]['readable'] = true;
+        if (!isset($nav[$parent])) {
+            return;
+        }
 
-            if (isset($nav[$nav[$parent][0]['nav_parent']])
-                && (!isset($nav[$nav[$parent][0]['nav_parent']][0]['readable'])
-                    || !$nav[$nav[$parent][0]['nav_parent']][0]['readable'])
-            ) {
-                $this->setReadable($nav, $nav[$parent][0]['nav_parent']);
-            }
+        $nav[$parent][0]['readable'] = true;
+
+        if (isset($nav[$nav[$parent][0]['nav_parent']])
+            && (!isset($nav[$nav[$parent][0]['nav_parent']][0]['readable'])
+                || !$nav[$nav[$parent][0]['nav_parent']][0]['readable'])
+        ) {
+            $this->setReadable($nav, $nav[$parent][0]['nav_parent']);
         }
     }
 

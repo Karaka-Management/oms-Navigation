@@ -48,19 +48,17 @@ final class Installer extends InstallerAbstract
         try {
             $dbPool->get()->con->query('select 1 from `nav`');
         } catch (\Exception $e) {
-            return;
+            return; // @codeCoverageIgnore
         }
 
         $navFile = \file_get_contents($data['path'] ?? '');
-
         if ($navFile === false) {
-            throw new PathException($data['path'] ?? '');
+            throw new PathException($data['path'] ?? ''); // @codeCoverageIgnore
         }
 
         $navData = \json_decode($navFile, true);
-
         if ($navData === false) {
-            throw new \Exception();
+            throw new \Exception(); // @codeCoverageIgnore
         }
 
         foreach ($navData as $link) {
