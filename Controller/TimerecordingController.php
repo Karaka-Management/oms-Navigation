@@ -110,7 +110,7 @@ final class TimerecordingController extends Controller
     public function loadLanguage(RequestAbstract $request, ResponseAbstract $response) : void
     {
         $languages = $this->app->moduleManager->getLanguageFiles($request);
-        $langCode  = $response->getHeader()->getL11n()->getLanguage();
+        $langCode  = $response->getLanguage();
 
         foreach ($languages as $path) {
             $path = __DIR__ . '/../../..' . $path . '.' . $langCode . '.lang.php';
