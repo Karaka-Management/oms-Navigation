@@ -79,16 +79,16 @@ final class SearchController extends Controller
             }
         }
 
-        $response->getHeader()->set('Content-Type', MimeType::M_JSON . '; charset=utf-8', true);
+        $response->header->set('Content-Type', MimeType::M_JSON . '; charset=utf-8', true);
 
         if ($found === null) {
             $this->fillJsonResponse($request, $response, NotificationLevel::WARNING, 'Command', 'Unknown command "' . $search . '"', $search);
-            $response->getHeader()->setStatusCode(RequestStatusCode::R_400);
+            $response->header->status = RequestStatusCode::R_400;
 
             return;
         }
 
-        $response->set($request->getUri()->__toString(), new Redirect(UriFactory::build($found->uri)));
+        $response->set($request->uri->__toString(), new Redirect(UriFactory::build($found->uri)));
     }
 
     /**

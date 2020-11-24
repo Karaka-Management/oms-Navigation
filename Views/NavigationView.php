@@ -51,7 +51,7 @@ class NavigationView extends View
      * @var int
      * @since 1.0.0
      */
-    protected int $parent = 0;
+    public int $parent = 0;
 
     /**
      * Get navigation Id.
@@ -99,27 +99,5 @@ class NavigationView extends View
     public function setNav(array $nav) : void
     {
         $this->nav = $nav;
-    }
-
-    /**
-     * @return int
-     *
-     * @since 1.0.0
-     */
-    public function getParent() : int
-    {
-        return $this->parent;
-    }
-
-    /**
-     * @param int $parent Navigation parent element
-     *
-     * @return void
-     *
-     * @since 1.0.0
-     */
-    public function setParent(int $parent) : void
-    {
-        $this->parent = $parent;
     }
 }

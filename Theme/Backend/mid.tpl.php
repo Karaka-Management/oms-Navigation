@@ -21,7 +21,7 @@ if (isset($this->nav[\Modules\Navigation\Models\NavigationType::CONTENT])
 ) {
     echo '<div class="row"><div class="col-xs-12"><ul class="nav-top" role="navigation">';
 
-    $uriPath = $this->request->getUri()->getPath();
+    $uriPath = $this->request->uri->getPath();
 
     foreach ($this->nav[\Modules\Navigation\Models\NavigationType::CONTENT] as $key => $parent) {
         foreach ($parent as $link) {

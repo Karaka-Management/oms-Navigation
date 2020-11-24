@@ -31,7 +31,7 @@ class NavigationViewTest extends \PHPUnit\Framework\TestCase
 
         self::assertEquals(0, $view->getNavId());
         self::assertEquals([], $view->getNav());
-        self::assertEquals(0, $view->getParent());
+        self::assertEquals(0, $view->parent);
     }
 
     /**
@@ -48,7 +48,7 @@ class NavigationViewTest extends \PHPUnit\Framework\TestCase
         $view->setNav([1, 2, 3]);
         self::assertEquals([1, 2, 3], $view->getNav());
 
-        $view->setParent(4);
-        self::assertEquals(4, $view->getParent());
+        $view->parent = 4;
+        self::assertEquals(4, $view->parent);
     }
 }

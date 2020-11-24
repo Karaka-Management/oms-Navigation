@@ -44,7 +44,7 @@ final class TimerecordingController extends Controller
     public function createNavigationMid(int $pageId, RequestAbstract $request, ResponseAbstract $response) : NavigationView
     {
         $nav = Navigation::getInstance($request,
-            $this->app->accountManager->get($request->getHeader()->getAccount()),
+            $this->app->accountManager->get($request->header->account),
             $this->app->dbPool,
             $this->app->orgId,
             $this->app->appName
@@ -73,7 +73,7 @@ final class TimerecordingController extends Controller
     {
         $navObj = Navigation::getInstance(
             $request,
-            $this->app->accountManager->get($request->getHeader()->getAccount()),
+            $this->app->accountManager->get($request->header->account),
             $this->app->dbPool,
             $this->app->orgId,
             $this->app->appName
@@ -84,7 +84,7 @@ final class TimerecordingController extends Controller
 
         $unread = [];
         foreach ($this->receiving as $receiving) {
-            $unread[$receiving] = $this->app->moduleManager->get($receiving)->openNav($request->getHeader()->getAccount());
+            $unread[$receiving] = $this->app->moduleManager->get($receiving)->openNav($request->header->account);
         }
 
         $nav->setData('unread', $unread);
@@ -139,7 +139,7 @@ final class TimerecordingController extends Controller
     public function createNavigationSplash(int $pageId, RequestAbstract $request, ResponseAbstract $response) : NavigationView
     {
         $nav = Navigation::getInstance($request,
-            $this->app->accountManager->get($request->getHeader()->getAccount()),
+            $this->app->accountManager->get($request->header->account),
             $this->app->dbPool,
             $this->app->orgId,
             $this->app->appName

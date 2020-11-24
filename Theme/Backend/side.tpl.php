@@ -22,7 +22,7 @@ if (isset($this->nav[NavigationType::SIDE])) : ?>
 <div id="nav-side-outer">
     <ul id="nav-side-inner" class="nav" role="navigation">
         <?php
-        $uriPath = $this->request->getUri()->getPath();
+        $uriPath = $this->request->uri->getPath();
         foreach ($this->nav[NavigationType::SIDE][LinkType::CATEGORY] as $key => $parent) : ?>
         <li><input id="nav-<?= $this->printHtml($parent['nav_name']); ?>" type="checkbox">
             <ul>

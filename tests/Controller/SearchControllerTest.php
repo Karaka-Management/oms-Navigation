@@ -98,7 +98,7 @@ class SearchControllerTest extends \PHPUnit\Framework\TestCase
         $request  = new HttpRequest(new HttpUri('https://127.0.0.1/en/backend'));
         $request->createRequestHashs(2);
 
-        $request->getHeader()->setAccount(1);
+        $request->header->account = 1;
         $request->setData('search', ':goto General');
         $request->setData('app', 'Backend');
 
@@ -116,11 +116,11 @@ class SearchControllerTest extends \PHPUnit\Framework\TestCase
         $request  = new HttpRequest(new HttpUri('https://127.0.0.1/en/backend'));
         $request->createRequestHashs(0);
 
-        $request->getHeader()->setAccount(1);
+        $request->header->account = 1;
         $request->setData('search', ':goto Invalid');
         $request->setData('app', 'Backend');
 
         $this->module->searchGoto($request, $response);
-        self::assertEquals(RequestStatusCode::R_400, $response->getHeader()->getStatusCode());
+        self::assertEquals(RequestStatusCode::R_400, $response->header->status);
     }
 }
