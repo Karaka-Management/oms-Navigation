@@ -16,7 +16,6 @@ namespace Modules\Navigation\Controller;
 
 use Modules\Navigation\Models\Navigation;
 use phpOMS\Module\ModuleAbstract;
-use phpOMS\Module\WebInterface;
 
 /**
  * Navigation class.

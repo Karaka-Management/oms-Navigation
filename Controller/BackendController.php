@@ -26,11 +26,6 @@ use phpOMS\Message\ResponseAbstract;
  * @license OMS License 1.0
  * @link    https://orange-management.org
  * @since   1.0.0
- *
- * @todo Orange-Management/Modules#119
- *  Make navigation modifiable
- *  Navigation elements should be made modifiable in the module settings.
- *  In the module settings all navigation elements should be visible and the admin should be able to change them in the database.
  */
 final class BackendController extends Controller
 {
@@ -104,10 +99,6 @@ final class BackendController extends Controller
      * @param ResponseAbstract $response Response
      *
      * @return void
-     *
-     * @todo Orange-Management/Modules#190 & Orange-Management/Modules#181
-     *  The loading of the language file is slow since every module is loaded separately.
-     *  This should either get cached per user or maybe put into one large language file per language (like the routes).
      *
      * @since 1.0.0
      * @codeCoverageIgnore

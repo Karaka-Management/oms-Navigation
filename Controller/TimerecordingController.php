@@ -100,10 +100,6 @@ final class TimerecordingController extends Controller
      *
      * @return void
      *
-     * @todo Orange-Management/Modules#190
-     *  The loading of the language file is slow since every module is loaded separately.
-     *  This should either get cached per user or maybe put into one large language file per language (like the routes).
-     *
      * @since 1.0.0
      * @codeCoverageIgnore
      */
