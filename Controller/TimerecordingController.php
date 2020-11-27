@@ -53,7 +53,7 @@ final class TimerecordingController extends Controller
         $navView = new NavigationView($this->app->l11nManager, $request, $response);
         $navView->setTemplate('/Modules/Navigation/Theme/Backend/mid');
         $navView->setNav($nav->getNav());
-        $navView->setParent($pageId);
+        $navView->parent = $pageId;
 
         return $navView;
     }
@@ -145,7 +145,7 @@ final class TimerecordingController extends Controller
 
         $navView->setTemplate('/Modules/Navigation/Theme/Timerecording/splash');
         $navView->setNav($nav->getNav());
-        $navView->setParent($pageId);
+        $navView->parent = $pageId;
 
         return $navView;
     }

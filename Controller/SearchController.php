@@ -52,13 +52,17 @@ final class SearchController extends Controller
 
         /** @var \Modules\Navigation\Models\NavElement[] $elements */
         $elements = NavElementMapper::getAll();
-        $search   = \mb_strtolower(\substr(
-            $request->getData('search'),
-            \stripos(
+
+        $searchIdStartPos = \stripos($request->getData('search'), ':');
+        $patternStartPos  = $searchIdStartPos === false ? -1 : \stripos(
                 $request->getData('search'),
                 ' ',
-                \stripos($request->getData('search'), ':')
-            ) + 1
+                $searchIdStartPos
+            );
+
+        $search = \mb_strtolower(\substr(
+            $request->getData('search'),
+            $patternStartPos + 1
         ));
 
         $found = null;
@@ -81,7 +85,7 @@ final class SearchController extends Controller
 
         $response->header->set('Content-Type', MimeType::M_JSON . '; charset=utf-8', true);
 
-        if ($found === null) {
+        if ($found === null || $found->uri === null) {
             $this->fillJsonResponse($request, $response, NotificationLevel::WARNING, 'Command', 'Unknown command "' . $search . '"', $search);
             $response->header->status = RequestStatusCode::R_400;
 
