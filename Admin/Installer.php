@@ -36,19 +36,19 @@ final class Installer extends InstallerAbstract
      * @param DatabasePool $dbPool Database pool
      * @param array        $data   Module info
      *
-     * @return void
+     * @return array
      *
      * @throws PathException This exception is thrown if the Navigation install file couldn't be found
      * @throws \Exception    This exception is thrown if the Navigation install file is invalid json
      *
      * @since 1.0.0
      */
-    public static function installExternal(DatabasePool $dbPool, array $data) : void
+    public static function installExternal(DatabasePool $dbPool, array $data) : array
     {
         try {
             $dbPool->get()->con->query('select 1 from `nav`');
         } catch (\Exception $e) {
-            return; // @codeCoverageIgnore
+            return []; // @codeCoverageIgnore
         }
 
         $navFile = \file_get_contents($data['path'] ?? '');
@@ -64,6 +64,8 @@ final class Installer extends InstallerAbstract
         foreach ($navData as $link) {
             self::installLink($dbPool, $link);
         }
+
+        return [];
     }
 
     /**
