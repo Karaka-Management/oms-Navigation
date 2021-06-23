@@ -19,6 +19,7 @@ use Modules\Navigation\Models\NavElementMapper;
 use phpOMS\DataStorage\Database\DatabasePool;
 use phpOMS\Module\InstallerAbstract;
 use phpOMS\System\File\PathException;
+use phpOMS\Application\ApplicationAbstract;
 
 /**
  * Installer class.
@@ -33,7 +34,7 @@ final class Installer extends InstallerAbstract
     /**
      * Install data from providing modules.
      *
-     * @param DatabasePool $dbPool Database pool
+     * @param ApplicationAbstract $app Application
      * @param array        $data   Module info
      *
      * @return array
@@ -43,10 +44,10 @@ final class Installer extends InstallerAbstract
      *
      * @since 1.0.0
      */
-    public static function installExternal(DatabasePool $dbPool, array $data) : array
+    public static function installExternal(ApplicationAbstract $app, array $data) : array
     {
         try {
-            $dbPool->get()->con->query('select 1 from `nav`');
+            $app->dbPool->get()->con->query('select 1 from `nav`');
         } catch (\Exception $e) {
             return []; // @codeCoverageIgnore
         }
@@ -62,7 +63,7 @@ final class Installer extends InstallerAbstract
         }
 
         foreach ($navData as $link) {
-            self::installLink($dbPool, $link);
+            self::installLink($app->dbPool, $link);
         }
 
         return [];
