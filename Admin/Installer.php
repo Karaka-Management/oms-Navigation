@@ -16,10 +16,10 @@ namespace Modules\Navigation\Admin;
 
 use Modules\Navigation\Models\NavElement;
 use Modules\Navigation\Models\NavElementMapper;
+use phpOMS\Application\ApplicationAbstract;
 use phpOMS\DataStorage\Database\DatabasePool;
 use phpOMS\Module\InstallerAbstract;
 use phpOMS\System\File\PathException;
-use phpOMS\Application\ApplicationAbstract;
 
 /**
  * Installer class.
@@ -34,8 +34,8 @@ final class Installer extends InstallerAbstract
     /**
      * Install data from providing modules.
      *
-     * @param ApplicationAbstract $app Application
-     * @param array        $data   Module info
+     * @param ApplicationAbstract $app  Application
+     * @param array               $data Module info
      *
      * @return array
      *
