@@ -35,7 +35,7 @@ final class Installer extends InstallerAbstract
      * Install data from providing modules.
      *
      * @param ApplicationAbstract $app  Application
-     * @param array               $data Module info
+     * @param array               $data Additional data
      *
      * @return array
      *
