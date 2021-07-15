@@ -49,10 +49,6 @@ if (isset($this->nav[NavigationType::SIDE])) : ?>
             </ul>
         <?php endforeach; ?>
     </ul>
-    <div id="nav-side-settings">
-        <input id="speech-recognition" type="checkbox">
-        <label for="speech-recognition"><i class="fa fa-volume-up"></i><i class="fa fa-volume-down"></i></label>
-    </div>
 </div>
 <?php
 endif;
