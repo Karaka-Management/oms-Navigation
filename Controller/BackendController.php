@@ -14,15 +14,15 @@ declare(strict_types=1);
 
 namespace Modules\Navigation\Controller;
 
+use Model\NullSetting;
+use Model\SettingMapper;
+use Modules\Navigation\Models\NavElementMapper;
 use Modules\Navigation\Models\Navigation;
 use Modules\Navigation\Views\NavigationView;
+use phpOMS\Contract\RenderableInterface;
 use phpOMS\Message\RequestAbstract;
 use phpOMS\Message\ResponseAbstract;
-use Model\SettingMapper;
-use Model\NullSetting;
-use Modules\Navigation\Models\NavElementMapper;
 use phpOMS\Views\View;
-use phpOMS\Contract\RenderableInterface;
 
 /**
  * Navigation class.

@@ -13,7 +13,6 @@
 declare(strict_types=1);
 
 use Modules\Navigation\Controller\BackendController;
-use Modules\Navigation\Models\PermissionState;
 use phpOMS\Account\PermissionType;
 use phpOMS\Router\RouteVerb;
 
