@@ -93,6 +93,7 @@ class Navigation
             $sth   = $query->select('*')
                 ->from('nav')
                 ->whereIn('nav.nav_pid', $hashes)
+                ->andWhere('nav.nav_status', '=', LinkStatus::ACTIVE)
                 ->orderBy('nav.nav_order', 'ASC')
                 ->execute();
 

@@ -33,6 +33,14 @@ class NavElement
     public int $id = 0;
 
     /**
+     * App.
+     *
+     * @var int
+     * @since 1.0.0
+     */
+    public int $app = 0;
+
+    /**
      * Page Id.
      *
      * Generated from the path from a URI (sha1)
@@ -41,6 +49,16 @@ class NavElement
      * @since 1.0.0
      */
     public string $pid = '';
+
+    /**
+     * Page Id.
+     *
+     * Generated from the path from a URI (sha1)
+     *
+     * @var string
+     * @since 1.0.0
+     */
+    public string $pidRaw = '';
 
     /**
      * Name of the link.
@@ -150,4 +168,12 @@ class NavElement
      * @since 1.0.0
      */
     public ?int $permissionElement = null;
+
+    /**
+     * Status.
+     *
+     * @var int
+     * @since 1.0.0
+     */
+    public int $status = LinkStatus::ACTIVE;
 }

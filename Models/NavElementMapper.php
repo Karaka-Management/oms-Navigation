@@ -34,7 +34,9 @@ final class NavElementMapper extends DataMapperAbstract
      */
     protected static array $columns = [
         'nav_id'                    => ['name' => 'nav_id',                    'type' => 'int',    'internal' => 'id'],
+        'nav_app'                    => ['name' => 'nav_app',                    'type' => 'int',    'internal' => 'app'],
         'nav_pid'                   => ['name' => 'nav_pid',                   'type' => 'string', 'internal' => 'pid'],
+        'nav_pid_raw'                   => ['name' => 'nav_pid_raw',                   'type' => 'string', 'internal' => 'pidRaw'],
         'nav_name'                  => ['name' => 'nav_name',                  'type' => 'string', 'internal' => 'name'],
         'nav_type'                  => ['name' => 'nav_type',                  'type' => 'int',    'internal' => 'type'],
         'nav_subtype'               => ['name' => 'nav_subtype',               'type' => 'int',    'internal' => 'subtype'],
@@ -48,6 +50,7 @@ final class NavElementMapper extends DataMapperAbstract
         'nav_permission_permission' => ['name' => 'nav_permission_permission', 'type' => 'int',    'internal' => 'permissionPerm'],
         'nav_permission_type'       => ['name' => 'nav_permission_type',       'type' => 'int',    'internal' => 'permissionType'],
         'nav_permission_element'    => ['name' => 'nav_permission_element',    'type' => 'int',    'internal' => 'permissionElement'],
+        'nav_status'                  => ['name' => 'nav_status',                  'type' => 'int',    'internal' => 'status'],
     ];
 
     /**

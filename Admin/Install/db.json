@@ -8,9 +8,21 @@
                 "null": false,
                 "primary": true
             },
+            "nav_app": {
+                "name": "nav_app",
+                "type": "INT",
+                "null": false,
+                "foreignTable": "app",
+                "foreignKey": "app_id"
+            },
             "nav_pid": {
                 "name": "nav_pid",
                 "type": "VARCHAR(40)",
+                "null": false
+            },
+            "nav_pid_raw": {
+                "name": "nav_pid_raw",
+                "type": "VARCHAR(255)",
                 "null": false
             },
             "nav_name": {
@@ -20,6 +32,11 @@
             },
             "nav_type": {
                 "name": "nav_type",
+                "type": "TINYINT",
+                "null": false
+            },
+            "nav_status": {
+                "name": "nav_status",
                 "type": "TINYINT",
                 "null": false
             },

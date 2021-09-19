@@ -18,6 +18,11 @@ use Modules\Navigation\Models\Navigation;
 use Modules\Navigation\Views\NavigationView;
 use phpOMS\Message\RequestAbstract;
 use phpOMS\Message\ResponseAbstract;
+use Model\SettingMapper;
+use Model\NullSetting;
+use Modules\Navigation\Models\NavElementMapper;
+use phpOMS\Views\View;
+use phpOMS\Contract\RenderableInterface;
 
 /**
  * Navigation class.
@@ -148,5 +153,40 @@ final class BackendController extends Controller
         $navView->parent = $pageId;
 
         return $navView;
+    }
+
+    /**
+     * Method which generates the module profile view.
+     *
+     * @param RequestAbstract  $request  Request
+     * @param ResponseAbstract $response Response
+     * @param mixed            $data     Generic data
+     *
+     * @return RenderableInterface Response can be rendered
+     *
+     * @since 1.0.0
+     */
+    public function viewModuleSettings(RequestAbstract $request, ResponseAbstract $response, $data = null) : RenderableInterface
+    {
+        $view = new View($this->app->l11nManager, $request, $response);
+        $view->addData('nav', $this->app->moduleManager->get('Navigation')->createNavigationMid(1000105001, $request, $response));
+
+        $id = $request->getData('id') ?? '';
+
+        $settings = SettingMapper::getFor($id, 'module');
+        if (!($settings instanceof NullSetting)) {
+            $view->setData('settings', !\is_array($settings) ? [$settings] : $settings);
+        }
+
+        $navigation = NavElementMapper::getAll();
+        $view->setData('navigation', $navigation);
+
+        if (\is_file(__DIR__ . '/../Admin/Settings/Theme/Backend/settings.tpl.php')) {
+            $view->setTemplate('/Modules/' . static::MODULE_NAME . '/Admin/Settings/Theme/Backend/settings');
+        } else {
+            $view->setTemplate('/Modules/Admin/Theme/Backend/modules-settings');
+        }
+
+        return $view;
     }
 }

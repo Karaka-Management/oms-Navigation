@@ -63,7 +63,7 @@ final class Installer extends InstallerAbstract
         }
 
         foreach ($navData as $link) {
-            self::installLink($app->dbPool, $link);
+            self::installLink($app->dbPool, $link, $data['app'] ?? null);
         }
 
         return [];
@@ -74,17 +74,19 @@ final class Installer extends InstallerAbstract
      *
      * @param DatabasePool $dbPool Database instance
      * @param array        $data   Link info
+     * @param int          $app    App
      *
      * @return void
      *
      * @since 1.0.0
      */
-    private static function installLink($dbPool, $data) : void
+    private static function installLink(DatabasePool $dbPool, array $data, int $app = null) : void
     {
         $navElement = new NavElement();
 
         $navElement->id                = (int) ($data['id'] ?? 0);
         $navElement->pid               = \sha1(\str_replace('/', '', $data['pid'] ?? ''));
+        $navElement->pidRaw            = $data['pid'] ?? '';
         $navElement->name              = (string) ($data['name'] ?? '');
         $navElement->type              = (int) ($data['type'] ?? 1);
         $navElement->subtype           = (int) ($data['subtype'] ?? 2);
@@ -92,6 +94,7 @@ final class Installer extends InstallerAbstract
         $navElement->uri               = $data['uri'] ?? null;
         $navElement->target            = (string) ($data['target'] ?? 'self');
         $navElement->action            = $data['action'] ?? null;
+        $navElement->app               = (int) ($data['app'] ?? ($app ?? 2));
         $navElement->from              = (string) ($data['from'] ?? '0');
         $navElement->order             = (int) ($data['order'] ?? 1);
         $navElement->parent            = (int) ($data['parent'] ?? 0);
