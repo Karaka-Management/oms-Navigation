@@ -34,15 +34,9 @@ if (isset($this->nav[NavigationType::SIDE])) : ?>
                     <?php if (isset($this->nav[NavigationType::SIDE][LinkType::LINK])) :
                         foreach ($this->nav[NavigationType::SIDE][LinkType::LINK] as $key2 => $link) :
                             if ($link['nav_parent'] === $key) :
-                                $uri       = \phpOMS\Uri\UriFactory::build($link['nav_uri']);
-                                $parentUri = \explode('/', $uri);
-                                \array_pop($parentUri);
-                                $miniParent = \ltrim(\implode('/', $parentUri), '/') . '/';
-                                // todo: very simpleminded solution. doesn't work for root path /en/backend etc. e.g. dashboard
-                                // this also fails for urls which are not structured like a tree
+                                $uri = \phpOMS\Uri\UriFactory::build($link['nav_uri']);
                             ?>
-                                <li<?= (\count($parentUri) > 2 && \stripos($uriPath, $miniParent) !== false) ? ' class="active"' : ''; ?>>
-                                    <a href="<?= $uri; ?>"><?= $this->getHtml($link['nav_name'], 'Navigation'); ?></a>
+                                <li><a href="<?= $uri; ?>"><?= $this->getHtml($link['nav_name'], 'Navigation'); ?></a>
                             <?php endif;
                         endforeach;
                     endif; ?>
