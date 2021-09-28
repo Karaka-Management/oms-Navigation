@@ -182,7 +182,7 @@ final class BackendController extends Controller
         $view->setData('navigation', $navigation);
 
         if (\is_file(__DIR__ . '/../Admin/Settings/Theme/Backend/settings.tpl.php')) {
-            $view->setTemplate('/Modules/' . static::MODULE_NAME . '/Admin/Settings/Theme/Backend/settings');
+            $view->setTemplate('/Modules/' . static::NAME . '/Admin/Settings/Theme/Backend/settings');
         } else {
             $view->setTemplate('/Modules/Admin/Theme/Backend/modules-settings');
         }

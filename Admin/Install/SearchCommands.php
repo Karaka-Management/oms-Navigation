@@ -22,7 +22,7 @@ return [
             'dest'       => '\Modules\Navigation\Controller\SearchController:searchGoto',
             'verb'       => RouteVerb::ANY,
             'permission' => [
-                'module' => SearchController::MODULE_NAME,
+                'module' => SearchController::NAME,
                 'type'   => PermissionType::READ,
             ],
         ],
