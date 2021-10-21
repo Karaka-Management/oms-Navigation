@@ -38,7 +38,7 @@ use phpOMS\Utils\TestUtils;
  *
  * @internal
  */
-class SearchControllerTest extends \PHPUnit\Framework\TestCase
+final class SearchControllerTest extends \PHPUnit\Framework\TestCase
 {
     protected ApplicationAbstract $app;
 

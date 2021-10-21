@@ -19,7 +19,7 @@ use Modules\Navigation\Views\NavigationView;
 /**
  * @internal
  */
-class NavigationViewTest extends \PHPUnit\Framework\TestCase
+final class NavigationViewTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @covers Modules\Navigation\Views\NavigationView
