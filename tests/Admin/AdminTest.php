@@ -46,8 +46,6 @@ final class AdminTest extends \PHPUnit\Framework\TestCase
 
         $account       = AccountMapper::getWithPermissions(1);
         $nav           = Navigation::getInstance($request, $account, $GLOBALS['dbpool'], 1, 'Backend')->getNav();
-        $moduleManager = new ModuleManager($this->app, __DIR__ . '/../../../../Modules/');
-        $modules       = $moduleManager->getInstalledModules(false);
 
         self::assertGreaterThan(0, \count($nav));
     }

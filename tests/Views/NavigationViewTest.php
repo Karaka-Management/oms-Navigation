@@ -21,34 +21,54 @@ use Modules\Navigation\Views\NavigationView;
  */
 final class NavigationViewTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @covers Modules\Navigation\Views\NavigationView
-     * @group module
-     */
-    public function testDefault() : void
-    {
-        $view = new NavigationView();
+    private NavigationView $view;
 
-        self::assertEquals(0, $view->getNavId());
-        self::assertEquals([], $view->getNav());
-        self::assertEquals(0, $view->parent);
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp() : void
+    {
+        $this->view = new NavigationView();
     }
 
     /**
      * @covers Modules\Navigation\Views\NavigationView
      * @group module
      */
-    public function testGetSet() : void
+    public function testDefault() : void
     {
-        $view = new NavigationView();
+        self::assertEquals(0, $this->view->getNavId());
+        self::assertEquals([], $this->view->getNav());
+        self::assertEquals(0, $this->view->parent);
+    }
 
-        $view->setNavId(2);
-        self::assertEquals(2, $view->getNavId());
+    /**
+     * @covers Modules\Navigation\Views\NavigationView
+     * @group module
+     */
+    public function testNavIdInputOutput() : void
+    {
+        $this->view->setNavId(2);
+        self::assertEquals(2, $this->view->getNavId());
+    }
 
-        $view->setNav([1, 2, 3]);
-        self::assertEquals([1, 2, 3], $view->getNav());
+    /**
+     * @covers Modules\Navigation\Views\NavigationView
+     * @group module
+     */
+    public function testNavInputOutput() : void
+    {
+        $this->view->setNav([1, 2, 3]);
+        self::assertEquals([1, 2, 3], $this->view->getNav());
+    }
 
-        $view->parent = 4;
-        self::assertEquals(4, $view->parent);
+    /**
+     * @covers Modules\Navigation\Views\NavigationView
+     * @group module
+     */
+    public function testParentInputOutput() : void
+    {
+        $this->view->parent = 4;
+        self::assertEquals(4, $this->view->parent);
     }
 }
