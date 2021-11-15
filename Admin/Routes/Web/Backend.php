@@ -17,9 +17,20 @@ use phpOMS\Account\PermissionType;
 use phpOMS\Router\RouteVerb;
 
 return [
-	'^.*/admin/module/settings\?id=Navigation.*$' => [
+	'^.*/admin/module/settings\?id=Navigation$' => [
         [
             'dest'       => '\Modules\Navigation\Controller\BackendController:viewModuleSettings',
+            'verb'       => RouteVerb::GET,
+            'permission' => [
+                'module' => BackendController::NAME,
+                'type'   => PermissionType::READ,
+                'state'  => \Modules\Admin\Models\PermissionState::MODULE,
+            ],
+        ],
+    ],
+    '^.*/admin/module/settings\?id=Navigation&nav=.*?$' => [
+        [
+            'dest'       => '\Modules\Navigation\Controller\BackendController:viewModuleNavElementSettings',
             'verb'       => RouteVerb::GET,
             'permission' => [
                 'module' => BackendController::NAME,

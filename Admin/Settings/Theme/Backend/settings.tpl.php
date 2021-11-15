@@ -105,7 +105,7 @@ echo $this->getData('nav')->render(); ?>
                         <label>
                             <i class="filter fa fa-filter"></i>
                         </label>
-                    <td><?= $this->getHtml('From'); ?>
+                    <td><?= $this->getHtml('Provider'); ?>
                         <label for="navList-sort-15">
                             <input type="radio" name="navList-sort" id="navList-sort-15">
                             <i class="sort-asc fa fa-chevron-up"></i>
@@ -132,7 +132,7 @@ echo $this->getData('nav')->render(); ?>
                 <tbody>
                 <?php $count = 0;
                 foreach ($navs as $key => $nav) : ++$count;
-                	$url = UriFactory::build('{/prefix}admin/module/settings?id=Navigation&nav=' . $nav->id); ?>
+                    $url = UriFactory::build('{/prefix}admin/module/settings?id=Navigation&nav=' . $nav->id); ?>
                     <tr tabindex="0" data-href="<?= $url; ?>">
                         <td><a href="<?= $url; ?>"><?= $nav->id; ?></a>
                         <td><a href="<?= $url; ?>"><?= $nav->pidRaw; ?></a>

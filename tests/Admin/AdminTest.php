@@ -17,7 +17,6 @@ namespace Modules\Navigation\tests\Admin;
 use Modules\Admin\Models\AccountMapper;
 use Modules\Navigation\Models\Navigation;
 use phpOMS\Message\Http\HttpRequest;
-use phpOMS\Module\ModuleManager;
 use phpOMS\Uri\HttpUri;
 
 /**

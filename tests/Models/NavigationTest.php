@@ -17,7 +17,6 @@ namespace Modules\Navigation\tests\Models;
 use Modules\Admin\Models\AccountMapper;
 use Modules\Navigation\Models\Navigation;
 use phpOMS\Message\Http\HttpRequest;
-use phpOMS\Module\ModuleManager;
 use phpOMS\Uri\HttpUri;
 use phpOMS\Utils\TestUtils;
 
@@ -60,6 +59,6 @@ final class NavigationTest extends \PHPUnit\Framework\TestCase
         $this->expectException(\Exception::class);
 
         $account = AccountMapper::getWithPermissions(9999);
-        $nav = Navigation::getInstance(null, $account, $GLOBALS['dbpool'], 1, 'Backend');
+        $nav     = Navigation::getInstance(null, $account, $GLOBALS['dbpool'], 1, 'Backend');
     }
 }

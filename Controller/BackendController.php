@@ -157,7 +157,7 @@ final class BackendController extends Controller
     }
 
     /**
-     * Method which generates the module profile view.
+     * Method which generates the module settings view.
      *
      * @param RequestAbstract  $request  Request
      * @param ResponseAbstract $response Response
@@ -189,5 +189,25 @@ final class BackendController extends Controller
         }
 
         return $view;
+    }
+
+    /**
+     * Method which generates a navigation settings view.
+     *
+     * @param RequestAbstract  $request  Request
+     * @param ResponseAbstract $response Response
+     * @param mixed            $data     Generic data
+     *
+     * @return RenderableInterface Response can be rendered
+     *
+     * @since 1.0.0
+     */
+    public function viewModuleNavElementSettings(RequestAbstract $request, ResponseAbstract $response, $data = null) : RenderableInterface
+    {
+        $view = new View($this->app->l11nManager, $request, $response);
+        $view->setTemplate('/Modules/' . static::NAME . '/Admin/Settings/Theme/Backend/settings-nav');
+        $view->addData('nav', $this->app->moduleManager->get('Navigation')->createNavigationMid(1000105001, $request, $response));
+
+        $view->addData('nav-element', NavElementMapper::get((int) $request->getData('nav')));
     }
 }

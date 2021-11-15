@@ -12,4 +12,12 @@
  */
 declare(strict_types=1);
 
-return ['Navigation' => []];
+return ['Navigation' => [
+	'PageId'   => 'PageId',
+	'Name'     => 'Name',
+	'Type'     => 'Type',
+	'Subtype'  => 'Subtype',
+	'Uri'      => 'Uri',
+	'Provider' => 'Provider',
+	'Parent'   => 'Parent',
+]];
