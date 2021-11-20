@@ -47,9 +47,10 @@ final class BackendController extends Controller
      * @since 1.0.0
      * @codeCoverageIgnore
      */
-    public function createNavigationMid(int $pageId, RequestAbstract $request, ResponseAbstract $response) : NavigationView
+    public function createNavigationMid(int $pageId, RequestAbstract $request, ResponseAbstract $response): NavigationView
     {
-        $nav = Navigation::getInstance($request,
+        $nav = Navigation::getInstance(
+            $request,
             $this->app->accountManager->get($request->header->account),
             $this->app->dbPool,
             $this->app->orgId,
@@ -75,7 +76,7 @@ final class BackendController extends Controller
      * @since 1.0.0
      * @codeCoverageIgnore
      */
-    public function getView(RequestAbstract $request, ResponseAbstract $response) : NavigationView
+    public function getView(RequestAbstract $request, ResponseAbstract $response): NavigationView
     {
         $navObj = Navigation::getInstance(
             $request,
@@ -109,7 +110,7 @@ final class BackendController extends Controller
      * @since 1.0.0
      * @codeCoverageIgnore
      */
-    public function loadLanguage(RequestAbstract $request, ResponseAbstract $response) : void
+    public function loadLanguage(RequestAbstract $request, ResponseAbstract $response): void
     {
         $languages = $this->app->moduleManager->getLanguageFiles($request);
         $langCode  = $response->getLanguage();
@@ -138,9 +139,10 @@ final class BackendController extends Controller
      * @since 1.0.0
      * @codeCoverageIgnore
      */
-    public function createNavigationSplash(int $pageId, RequestAbstract $request, ResponseAbstract $response) : NavigationView
+    public function createNavigationSplash(int $pageId, RequestAbstract $request, ResponseAbstract $response): NavigationView
     {
-        $nav = Navigation::getInstance($request,
+        $nav = Navigation::getInstance(
+            $request,
             $this->app->accountManager->get($request->header->account),
             $this->app->dbPool,
             $this->app->orgId,
@@ -167,7 +169,7 @@ final class BackendController extends Controller
      *
      * @since 1.0.0
      */
-    public function viewModuleSettings(RequestAbstract $request, ResponseAbstract $response, $data = null) : RenderableInterface
+    public function viewModuleSettings(RequestAbstract $request, ResponseAbstract $response, $data = null): RenderableInterface
     {
         $view = new View($this->app->l11nManager, $request, $response);
         $view->addData('nav', $this->app->moduleManager->get('Navigation')->createNavigationMid(1000105001, $request, $response));
@@ -202,12 +204,14 @@ final class BackendController extends Controller
      *
      * @since 1.0.0
      */
-    public function viewModuleNavElementSettings(RequestAbstract $request, ResponseAbstract $response, $data = null) : RenderableInterface
+    public function viewModuleNavElementSettings(RequestAbstract $request, ResponseAbstract $response, $data = null): RenderableInterface
     {
         $view = new View($this->app->l11nManager, $request, $response);
         $view->setTemplate('/Modules/' . static::NAME . '/Admin/Settings/Theme/Backend/settings-nav');
         $view->addData('nav', $this->app->moduleManager->get('Navigation')->createNavigationMid(1000105001, $request, $response));
 
         $view->addData('nav-element', NavElementMapper::get((int) $request->getData('nav')));
+
+        return $view;
     }
 }

@@ -14,8 +14,8 @@ declare(strict_types=1);
 
 use phpOMS\Uri\UriFactory;
 
-$nav    = $this->getData('nav');
-$routes = $this->getData('routes');
+$nav    = $this->getData('nav-element');
+$routes = $this->getData('routes') ?? [];
 
 /**
  * @var \phpOMS\Views\View $this
@@ -29,12 +29,12 @@ echo $this->getData('nav')->render(); ?>
             <div class="portlet-body">
                 <div class="form-group">
                     <label for="iId"><?= $this->getHtml('Id'); ?></label>
-                    <input id="iId" name="id" type="text" value="<?= $this->printHtml($nav->id); ?>">
+                    <input id="iId" name="id" type="text" value="<?= $this->printHtml((string) $nav->id); ?>">
                 </div>
 
                 <div class="form-group">
                     <label for="iApp"><?= $this->getHtml('App'); ?></label>
-                    <input id="iApp" name="app" type="text" value="<?= $this->printHtml($nav->app); ?>">
+                    <input id="iApp" name="app" type="text" value="<?= $this->printHtml((string) $nav->app); ?>">
                 </div>
 
                 <div class="form-group">
@@ -49,17 +49,17 @@ echo $this->getData('nav')->render(); ?>
 
                 <div class="form-group">
                     <label for="iType"><?= $this->getHtml('Type'); ?></label>
-                    <input id="iType" name="type" type="text" value="<?= $this->printHtml($nav->type); ?>">
+                    <input id="iType" name="type" type="text" value="<?= $this->printHtml((string) $nav->type); ?>">
                 </div>
 
                 <div class="form-group">
                     <label for="iSubtype"><?= $this->getHtml('Subtype'); ?></label>
-                    <input id="iSubtype" name="subtype" type="text" value="<?= $this->printHtml($nav->subtype); ?>">
+                    <input id="iSubtype" name="subtype" type="text" value="<?= $this->printHtml((string) $nav->subtype); ?>">
                 </div>
 
                 <div class="form-group">
                     <label for="iLinkStatus"><?= $this->getHtml('LinkStatus'); ?></label>
-                    <input id="iLinkStatus" name="status" type="text" value="<?= $this->printHtml($nav->status); ?>">
+                    <input id="iLinkStatus" name="status" type="text" value="<?= $this->printHtml((string) $nav->status); ?>">
                 </div>
 
                 <div class="form-group">
@@ -74,22 +74,22 @@ echo $this->getData('nav')->render(); ?>
 
                 <div class="form-group">
                     <label for="iParent"><?= $this->getHtml('Parent'); ?></label>
-                    <input id="iParent" name="parent" type="text" value="<?= $this->printHtml($nav->parent); ?>">
+                    <input id="iParent" name="parent" type="text" value="<?= $this->printHtml((string) $nav->parent); ?>">
                 </div>
 
                 <div class="form-group">
                     <label for="iOrder"><?= $this->getHtml('Order'); ?></label>
-                    <input id="iOrder" name="order" type="text" value="<?= $this->printHtml($nav->order); ?>">
+                    <input id="iOrder" name="order" type="text" value="<?= $this->printHtml((string) $nav->order); ?>">
                 </div>
 
                 <div class="form-group">
                     <label for="iPermission"><?= $this->getHtml('Permission'); ?></label>
-                    <input id="iPermission" name="permPerm" type="text" value="<?= $this->printHtml($nav->permissionPerm); ?>">
+                    <input id="iPermission" name="permPerm" type="text" value="<?= $this->printHtml((string) $nav->permissionPerm); ?>">
                 </div>
 
                 <div class="form-group">
                     <label for="iPermissionType"><?= $this->getHtml('PermissionType'); ?></label>
-                    <input id="iPermissionType" name="permType" type="text" value="<?= $this->printHtml($nav->permissionType); ?>">
+                    <input id="iPermissionType" name="permType" type="text" value="<?= $this->printHtml((string) $nav->permissionType); ?>">
                 </div>
 
                 <div class="form-group">
@@ -198,8 +198,8 @@ echo $this->getData('nav')->render(); ?>
             </table>
             </div>
             <div class="portlet-foot">
-                <a tabindex="0" class="button" href="<?= UriFactory::build($previous); ?>"><?= $this->getHtml('Previous', '0', '0'); ?></a>
-                <a tabindex="0" class="button" href="<?= UriFactory::build($next); ?>"><?= $this->getHtml('Next', '0', '0'); ?></a>
+                <a tabindex="0" class="button" href="<?= UriFactory::build($previous ?? ''); ?>"><?= $this->getHtml('Previous', '0', '0'); ?></a>
+                <a tabindex="0" class="button" href="<?= UriFactory::build($next ?? ''); ?>"><?= $this->getHtml('Next', '0', '0'); ?></a>
             </div>
         </div>
     </div>
