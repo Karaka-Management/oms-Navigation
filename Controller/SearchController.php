@@ -51,7 +51,7 @@ final class SearchController extends Controller
         $this->loadLanguage($request, $response, $request->getData('app'));
 
         /** @var \Modules\Navigation\Models\NavElement[] $elements */
-        $elements = NavElementMapper::getAll();
+        $elements = NavElementMapper::getAll()->execute();
 
         $searchIdStartPos = \stripos($request->getData('search'), ':');
         $patternStartPos  = $searchIdStartPos === false ? -1 : \stripos(

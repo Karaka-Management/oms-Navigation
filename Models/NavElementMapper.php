@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 namespace Modules\Navigation\Models;
 
-use phpOMS\DataStorage\Database\DataMapperAbstract;
+use phpOMS\DataStorage\Database\Mapper\DataMapperFactory;
 
 /**
  * Mapper class.
@@ -24,7 +24,7 @@ use phpOMS\DataStorage\Database\DataMapperAbstract;
  * @link    https://orange-management.org
  * @since   1.0.0
  */
-final class NavElementMapper extends DataMapperAbstract
+final class NavElementMapper extends DataMapperFactory
 {
     /**
      * Columns.
@@ -32,7 +32,7 @@ final class NavElementMapper extends DataMapperAbstract
      * @var array<string, array{name:string, type:string, internal:string, autocomplete?:bool, readonly?:bool, writeonly?:bool, annotations?:array}>
      * @since 1.0.0
      */
-    protected static array $columns = [
+    public const COLUMNS = [
         'nav_id'                        => ['name' => 'nav_id',                    'type' => 'int',    'internal' => 'id'],
         'nav_app'                       => ['name' => 'nav_app',                    'type' => 'int',    'internal' => 'app'],
         'nav_pid'                       => ['name' => 'nav_pid',                   'type' => 'string', 'internal' => 'pid'],
@@ -59,7 +59,7 @@ final class NavElementMapper extends DataMapperAbstract
      * @var string
      * @since 1.0.0
      */
-    protected static string $model = NavElement::class;
+    public const MODEL = NavElement::class;
 
     /**
      * Primary table.
@@ -67,7 +67,7 @@ final class NavElementMapper extends DataMapperAbstract
      * @var string
      * @since 1.0.0
      */
-    protected static string $table = 'nav';
+    public const TABLE = 'nav';
 
     /**
      * Primary field name.
@@ -75,7 +75,7 @@ final class NavElementMapper extends DataMapperAbstract
      * @var string
      * @since 1.0.0
      */
-    protected static string $primaryField = 'nav_id';
+    public const PRIMARYFIELD ='nav_id';
 
     /**
      * Autoincrement primary field.
@@ -83,5 +83,5 @@ final class NavElementMapper extends DataMapperAbstract
      * @var bool
      * @since 1.0.0
      */
-    protected static bool $autoincrement = false;
+    public const AUTOINCREMENT = false;
 }

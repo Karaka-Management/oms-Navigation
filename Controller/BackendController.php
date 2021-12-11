@@ -176,12 +176,12 @@ final class BackendController extends Controller
 
         $id = $request->getData('id') ?? '';
 
-        $settings = SettingMapper::getFor($id, 'module');
+        $settings = SettingMapper::getAll()->where('module', $id)->execute();
         if (!($settings instanceof NullSetting)) {
             $view->setData('settings', !\is_array($settings) ? [$settings] : $settings);
         }
 
-        $navigation = NavElementMapper::getAll();
+        $navigation = NavElementMapper::getAll()->execute();
         $view->setData('navigation', $navigation);
 
         if (\is_file(__DIR__ . '/../Admin/Settings/Theme/Backend/settings.tpl.php')) {
@@ -210,7 +210,7 @@ final class BackendController extends Controller
         $view->setTemplate('/Modules/' . static::NAME . '/Admin/Settings/Theme/Backend/settings-nav');
         $view->addData('nav', $this->app->moduleManager->get('Navigation')->createNavigationMid(1000105001, $request, $response));
 
-        $view->addData('nav-element', NavElementMapper::get((int) $request->getData('nav')));
+        $view->addData('nav-element', NavElementMapper::get()->where('id', (int) $request->getData('nav')))->execute();
 
         return $view;
     }
