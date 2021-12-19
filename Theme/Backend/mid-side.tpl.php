@@ -30,7 +30,7 @@ if (isset($this->nav[\Modules\Navigation\Models\NavigationType::CONTENT_SIDE])) 
             /** @var array $data */
             if ($link['nav_parent'] == $data[1]) {
                 echo '<li><a href="' . \phpOMS\Uri\UriFactory::build($link['nav_uri']) . '">'
-                     . $this->getHtml(5, 'Backend', $link['nav_name']) . '</a>';
+                     . $this->getHtml('5', 'Backend', $link['nav_name']) . '</a>';
             }
         }
     }

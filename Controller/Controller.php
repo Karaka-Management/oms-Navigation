@@ -14,7 +14,6 @@ declare(strict_types=1);
 
 namespace Modules\Navigation\Controller;
 
-use Modules\Navigation\Models\Navigation;
 use phpOMS\Module\ModuleAbstract;
 
 /**
