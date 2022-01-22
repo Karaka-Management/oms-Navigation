@@ -16,6 +16,7 @@ namespace Modules\Navigation\Controller;
 
 use Model\NullSetting;
 use Model\SettingMapper;
+use Modules\Admin\Models\AppMapper;
 use Modules\Navigation\Models\NavElementMapper;
 use Modules\Navigation\Models\Navigation;
 use Modules\Navigation\Views\NavigationView;
@@ -211,6 +212,35 @@ final class BackendController extends Controller
         $view->addData('nav', $this->app->moduleManager->get('Navigation')->createNavigationMid(1000105001, $request, $response));
 
         $view->addData('nav-element', NavElementMapper::get()->where('id', (int) $request->getData('nav'))->execute());
+
+        return $view;
+    }
+
+    /**
+     * Method which generates the module profile view.
+     *
+     * @param RequestAbstract  $request  Request
+     * @param ResponseAbstract $response Response
+     * @param mixed            $data     Generic data
+     *
+     * @return RenderableInterface Response can be rendered
+     *
+     * @since 1.0.0
+     */
+    public function viewModuleNavigationList(RequestAbstract $request, ResponseAbstract $response, $data = null) : RenderableInterface
+    {
+        $view = new View($this->app->l11nManager, $request, $response);
+        $view->setTemplate('/Modules/Navigation/Admin/Settings/Theme/Backend/modules-nav-list');
+        $view->addData('nav', $this->app->moduleManager->get('Navigation')->createNavigationMid(1000105001, $request, $response));
+
+        $module = $request->getData('id') ?? '';
+        $view->setData('module', $module);
+
+        $activeNavElements = NavElementMapper::getAll()->where('from', $module)->execute();
+        $view->setData('navs', $activeNavElements);
+
+        $apps = AppMapper::getAll()->execute();
+        $view->setData('apps', $apps);
 
         return $view;
     }

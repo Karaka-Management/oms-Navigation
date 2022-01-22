@@ -79,10 +79,8 @@ jsOMS.Modules.Navigation = class {
                 || document.body.clientWidth;
 
             /**
-             * @todo Orange-Management/Modules#192
-             *  The sidebar navigation is not working properly in many cases
-             *  1. if the content is too wide then the side nav becomes smaller (resize window for testing)
-             *  2. if the device is a handheld device it feels unintuitive to open/hide the navigation
+             * @todo Navigation sidebar width
+             *  The sidebar navigation is not working properly if the content is too wide then the side nav becomes smaller (resize window for testing)
              */
             e.nextElementSibling.checked = width < 800;
         }

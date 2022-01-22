@@ -39,4 +39,15 @@ return [
             ],
         ],
     ],
+    '^.*/admin/module/navigation/list\?.*$' => [
+        [
+            'dest'       => '\Modules\Navigation\Controller\BackendController:viewModuleNavigationList',
+            'verb'       => RouteVerb::GET,
+            'permission' => [
+                'module' => BackendController::NAME,
+                'type'   => PermissionType::READ,
+                'state'  =>  \Modules\Admin\Models\PermissionState::MODULE,
+            ],
+        ],
+    ],
 ];

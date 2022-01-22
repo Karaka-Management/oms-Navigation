@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1000501001,
+        "pid": "/admin/module",
+        "type": 3,
+        "subtype": 1,
+        "name": "Navigation",
+        "uri": "{/prefix}admin/module/navigation/list?{?}",
+        "target": "self",
+        "icon": null,
+        "order": 10,
+        "from": "Navigation",
+        "permission": { "permission": 2, "type": null, "element": null },
+        "parent": 1000105001,
+        "children": []
+    }
+]
