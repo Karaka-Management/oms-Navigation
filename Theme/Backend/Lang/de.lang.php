@@ -15,9 +15,9 @@ declare(strict_types=1);
 return ['Navigation' => [
     'Name'     => 'Name',
     'PageId'   => 'PageId',
-    'Parent'   => 'Parent',
-    'Provider' => 'Provider',
-    'Subtype'  => 'Subtype',
-    'Type'     => 'Type',
-    'Uri'      => 'Uri',
+    'Parent'   => 'Elternteil',
+    'Provider' => 'Anbieter',
+    'Subtype'  => 'Untertyp',
+    'Type'     => 'Typ',
+    'Uri'      => 'Uri.',
 ]];

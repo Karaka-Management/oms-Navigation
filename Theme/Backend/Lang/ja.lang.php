@@ -13,11 +13,11 @@
 declare(strict_types=1);
 
 return ['Navigation' => [
-    'Name'     => 'Name',
-    'PageId'   => 'PageId',
-    'Parent'   => 'Parent',
-    'Provider' => 'Provider',
-    'Subtype'  => 'Subtype',
-    'Type'     => 'Type',
-    'Uri'      => 'Uri',
+    'Name'     => '名前',
+    'PageId'   => 'page page',
+    'Parent'   => '親',
+    'Provider' => 'プロバイダー',
+    'Subtype'  => 'サブタイプ',
+    'Type'     => 'タイプ',
+    'Uri'      => 'u u',
 ]];
