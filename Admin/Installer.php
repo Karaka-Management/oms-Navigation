@@ -20,6 +20,7 @@ use phpOMS\Application\ApplicationAbstract;
 use phpOMS\DataStorage\Database\DatabasePool;
 use phpOMS\Module\InstallerAbstract;
 use phpOMS\System\File\PathException;
+use phpOMS\Utils\Parser\Php\ArrayParser;
 
 /**
  * Installer class.
@@ -70,11 +71,37 @@ final class Installer extends InstallerAbstract
             throw new \Exception(); // @codeCoverageIgnore
         }
 
+        if (($data['lang'] ?? null) !== null) {
+            self::installNavigationLanguage($data['lang'], $app->appName);
+        }
+
         foreach ($navData as $link) {
             self::installLink($app->dbPool, $link, $data['app'] ?? null);
         }
 
         return [];
+    }
+
+    private static function installNavigationLanguage(string $path, string $appName) : void
+    {
+        $files = \scandir($path);
+        if ($files !== false) {
+            foreach ($files as $file) {
+                if (\stripos($file, 'Navigation') !== 0) {
+                    continue;
+                }
+
+                $localization = include \rtrim($path, '/') . '/' . $file;
+
+                if (!\is_file($langPath = __DIR__ . '/../../../Web/' . $appName . '/lang/' . $file)) {
+                    \copy(__DIR__ . '/Install/NavigationSkeleton.php', $langPath);
+                }
+
+                $base = include $langPath;
+                $new  = \array_merge($base, $localization);
+                \file_put_contents($langPath, '<?php return ' . ArrayParser::serializeArray($new) . ';');
+            }
+        }
     }
 
     /**
@@ -103,7 +130,7 @@ final class Installer extends InstallerAbstract
         $navElement->target            = (string) ($data['target'] ?? 'self');
         $navElement->action            = $data['action'] ?? null;
         $navElement->app               = (int) ($data['app'] ?? ($app ?? 2));
-        $navElement->from              = (string) ($data['from'] ?? '0');
+        $navElement->from              = empty($from = (string) ($data['from'] ?? '')) ? '0' : $from;
         $navElement->order             = (int) ($data['order'] ?? 1);
         $navElement->parent            = (int) ($data['parent'] ?? 0);
         $navElement->permissionPerm    = $data['permission']['permission'] ?? null;
@@ -113,7 +140,7 @@ final class Installer extends InstallerAbstract
         NavElementMapper::create()->execute($navElement);
 
         foreach ($data['children'] as $link) {
-            self::installLink($dbPool, $link);
+            self::installLink($dbPool, $link, $app);
         }
     }
 }

@@ -116,6 +116,9 @@ final class BackendController extends Controller
         $languages = $this->app->moduleManager->getLanguageFiles($request);
         $langCode  = $response->getLanguage();
 
+        // Add application navigation
+        $languages[] = '/Web/' . ($this->app->appName) . '/lang/Navigation';
+
         foreach ($languages as $path) {
             $path = __DIR__ . '/../../..' . $path . '.' . $langCode . '.lang.php';
 
@@ -236,7 +239,14 @@ final class BackendController extends Controller
         $module = $request->getData('id') ?? '';
         $view->setData('module', $module);
 
-        $activeNavElements = NavElementMapper::getAll()->where('from', $module)->execute();
+        $query = NavElementMapper::getAll()
+            ->where('from', $module);
+
+        if ($module === 'Navigation') {
+            $query = $query->where('from', '0', connector: 'OR');
+        }
+
+        $activeNavElements = $query->execute();
         $view->setData('navs', $activeNavElements);
 
         $apps = AppMapper::getAll()->execute();
