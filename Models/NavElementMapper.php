@@ -48,7 +48,7 @@ final class NavElementMapper extends DataMapperFactory
         'nav_order'                 => ['name' => 'nav_order',                 'type' => 'int',    'internal' => 'order'],
         'nav_parent'                => ['name' => 'nav_parent',                'type' => 'int',    'internal' => 'parent'],
         'nav_permission_permission' => ['name' => 'nav_permission_permission', 'type' => 'int',    'internal' => 'permissionPerm'],
-        'nav_permission_type'       => ['name' => 'nav_permission_type',       'type' => 'int',    'internal' => 'permissionType'],
+        'nav_permission_category'       => ['name' => 'nav_permission_category',       'type' => 'int',    'internal' => 'permissionCategory'],
         'nav_permission_element'    => ['name' => 'nav_permission_element',    'type' => 'int',    'internal' => 'permissionElement'],
         'nav_status'                => ['name' => 'nav_status',                'type' => 'int',    'internal' => 'status'],
     ];

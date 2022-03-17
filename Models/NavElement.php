@@ -154,12 +154,12 @@ class NavElement
      * Permission type required to show link (null = any).
      *
      * Modules have different permission types (e.g. customer).
-     * The available types are defind in the respective module in \Modules\???\Models\PermissionState
+     * The available categories are defind in the respective module in \Modules\???\Models\PermissionCategory
      *
      * @var null|int
      * @since 1.0.0
      */
-    public ?int $permissionType = null;
+    public ?int $permissionCategory = null;
 
     /**
      * Element these permissions must be valid for (null = any).

@@ -93,8 +93,8 @@
                 "default": null,
                 "null": true
             },
-            "nav_permission_type": {
-                "name": "nav_permission_type",
+            "nav_permission_category": {
+                "name": "nav_permission_category",
                 "type": "INT",
                 "default": null,
                 "null": true

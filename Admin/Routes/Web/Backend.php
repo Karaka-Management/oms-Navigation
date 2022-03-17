@@ -24,7 +24,7 @@ return [
             'permission' => [
                 'module' => BackendController::NAME,
                 'type'   => PermissionType::READ,
-                'state'  => \Modules\Admin\Models\PermissionState::MODULE,
+                'state'  => \Modules\Admin\Models\PermissionCategory::MODULE,
             ],
         ],
     ],
@@ -35,7 +35,7 @@ return [
             'permission' => [
                 'module' => BackendController::NAME,
                 'type'   => PermissionType::READ,
-                'state'  => \Modules\Admin\Models\PermissionState::MODULE,
+                'state'  => \Modules\Admin\Models\PermissionCategory::MODULE,
             ],
         ],
     ],
@@ -46,7 +46,7 @@ return [
             'permission' => [
                 'module' => BackendController::NAME,
                 'type'   => PermissionType::READ,
-                'state'  =>  \Modules\Admin\Models\PermissionState::MODULE,
+                'state'  =>  \Modules\Admin\Models\PermissionCategory::MODULE,
             ],
         ],
     ],

@@ -105,7 +105,7 @@ class Navigation
                     $unit,
                     $app,
                     (string) $link[0]['nav_from'],
-                    (int) $link[0]['nav_permission_type'],
+                    (int) $link[0]['nav_permission_category'],
                     (int) $link[0]['nav_permission_element']
                 );
 
