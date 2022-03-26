@@ -117,6 +117,8 @@ final class Installer extends InstallerAbstract
      */
     private static function installLink(DatabasePool $dbPool, array $data, int $app = null) : void
     {
+        // @todo: implement in the api and then make an api call becuse we also want to be able to install
+        // navigation elements manually through the user interface?!
         $navElement = new NavElement();
 
         $navElement->id                = (int) ($data['id'] ?? 0);
