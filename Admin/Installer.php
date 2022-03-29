@@ -82,6 +82,16 @@ final class Installer extends InstallerAbstract
         return [];
     }
 
+    /**
+     * Install language file for navigation
+     *
+     * @param string $path    Path of the navigation language files
+     * @param string $appName Application name of the navigation elements
+     *
+     * @return void
+     *
+     * @since 1.0.0
+     */
     private static function installNavigationLanguage(string $path, string $appName) : void
     {
         $files = \scandir($path);
@@ -121,23 +131,23 @@ final class Installer extends InstallerAbstract
         // navigation elements manually through the user interface?!
         $navElement = new NavElement();
 
-        $navElement->id                = (int) ($data['id'] ?? 0);
-        $navElement->pid               = \sha1(\str_replace('/', '', $data['pid'] ?? ''));
-        $navElement->pidRaw            = $data['pid'] ?? '';
-        $navElement->name              = (string) ($data['name'] ?? '');
-        $navElement->type              = (int) ($data['type'] ?? 1);
-        $navElement->subtype           = (int) ($data['subtype'] ?? 2);
-        $navElement->icon              = $data['icon'] ?? null;
-        $navElement->uri               = $data['uri'] ?? null;
-        $navElement->target            = (string) ($data['target'] ?? 'self');
-        $navElement->action            = $data['action'] ?? null;
-        $navElement->app               = (int) ($data['app'] ?? ($app ?? 2));
-        $navElement->from              = empty($from = (string) ($data['from'] ?? '')) ? '0' : $from;
-        $navElement->order             = (int) ($data['order'] ?? 1);
-        $navElement->parent            = (int) ($data['parent'] ?? 0);
-        $navElement->permissionPerm    = $data['permission']['permission'] ?? null;
-        $navElement->permissionType    = $data['permission']['type'] ?? null;
-        $navElement->permissionElement = $data['permission']['element'] ?? null;
+        $navElement->id                 = (int) ($data['id'] ?? 0);
+        $navElement->pid                = \sha1(\str_replace('/', '', $data['pid'] ?? ''));
+        $navElement->pidRaw             = $data['pid'] ?? '';
+        $navElement->name               = (string) ($data['name'] ?? '');
+        $navElement->type               = (int) ($data['type'] ?? 1);
+        $navElement->subtype            = (int) ($data['subtype'] ?? 2);
+        $navElement->icon               = $data['icon'] ?? null;
+        $navElement->uri                = $data['uri'] ?? null;
+        $navElement->target             = (string) ($data['target'] ?? 'self');
+        $navElement->action             = $data['action'] ?? null;
+        $navElement->app                = (int) ($data['app'] ?? ($app ?? 2));
+        $navElement->from               = empty($from = (string) ($data['from'] ?? '')) ? '0' : $from;
+        $navElement->order              = (int) ($data['order'] ?? 1);
+        $navElement->parent             = (int) ($data['parent'] ?? 0);
+        $navElement->permissionPerm     = $data['permission']['permission'] ?? null;
+        $navElement->permissionCategory = $data['permission']['category'] ?? null;
+        $navElement->permissionElement  = $data['permission']['element'] ?? null;
 
         NavElementMapper::create()->execute($navElement);
 
