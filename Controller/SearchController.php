@@ -72,7 +72,7 @@ final class SearchController extends Controller
             }
 
             $name = \mb_strtolower($this->app->l11nManager->getText(
-                $response->getLanguage() ?? 'en',
+                $response->getLanguage(),
                 'Navigation', '0',
                 $element->name,
             ));
