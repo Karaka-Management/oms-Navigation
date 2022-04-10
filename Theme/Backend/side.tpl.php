@@ -19,12 +19,12 @@ use \Modules\Navigation\Models\NavigationType;
  * @var \Modules\Navigation\Views\NavigationView $this
  */
 if (isset($this->nav[NavigationType::SIDE])) : ?>
-<div id="nav-side-outer">
+<div id="nav-side-outer" class="oms-ui-state">
     <ul id="nav-side-inner" class="nav" role="navigation">
         <?php
         $uriPath = $this->request->uri->getPath();
         foreach ($this->nav[NavigationType::SIDE][LinkType::CATEGORY] as $key => $parent) : ?>
-        <li><input id="nav-<?= $this->printHtml($parent['nav_name']); ?>" type="checkbox">
+        <li><input class="oms-ui-state" id="nav-<?= $this->printHtml($parent['nav_name']); ?>" type="checkbox">
             <ul>
                 <li><label for="nav-<?= $this->printHtml($parent['nav_name']); ?>">
                     <?php if (isset($parent['nav_icon'])) : ?>
