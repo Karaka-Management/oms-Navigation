@@ -12,8 +12,6 @@
  */
 declare(strict_types=1);
 
-use phpOMS\Message\Http\HttpHeader;
-
 /**
  * @var \phpOMS\Views\View $this
  */
@@ -85,8 +83,8 @@ echo $this->getData('nav')->render();
                     <?php $c = 0;
                     foreach ($navs as $nav) : ++$c; ?>
                     <tr>
-                        <td><label class="checkbox" for="iActive-<?= $c ?>">
-                                <input id="iActive-<?= $c ?>" type="checkbox" name="active_route" value="<?= $this->printHtml($nav->uri); ?>"<?= true ? ' checked' : ''; ?>>
+                        <td><label class="checkbox" for="iActive-<?= $c; ?>">
+                                <input id="iActive-<?= $c; ?>" type="checkbox" name="active_route" value="<?= $this->printHtml($nav->uri); ?>"<?= true ? ' checked' : ''; ?>>
                                 <span class="checkmark"></span>
                             </label>
                         <td><?= $apps[$nav->app]?->name; ?>

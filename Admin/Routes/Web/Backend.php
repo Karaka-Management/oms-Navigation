@@ -46,7 +46,7 @@ return [
             'permission' => [
                 'module' => BackendController::NAME,
                 'type'   => PermissionType::READ,
-                'state'  =>  \Modules\Admin\Models\PermissionCategory::MODULE,
+                'state'  => \Modules\Admin\Models\PermissionCategory::MODULE,
             ],
         ],
     ],
