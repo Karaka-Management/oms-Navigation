@@ -2,7 +2,7 @@
 /**
  * Karaka
  *
- * PHP Version 8.0
+ * PHP Version 8.1
  *
  * @package   Modules\Navigation\Models
  * @copyright Dennis Eichhorn
@@ -96,6 +96,10 @@ class Navigation
                 ->andWhere('nav.nav_status', '=', LinkStatus::ACTIVE)
                 ->orderBy('nav.nav_order', 'ASC')
                 ->execute();
+
+            if ($sth === null) {
+                return;
+            }
 
             $tempNav = $sth->fetchAll(\PDO::FETCH_GROUP);
 
