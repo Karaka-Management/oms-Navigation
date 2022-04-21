@@ -43,8 +43,8 @@ final class Installer extends InstallerAbstract
     /**
      * Install data from providing modules.
      *
-     * @param ApplicationAbstract $app  Application
-     * @param array               $data Additional data
+     * @param ApplicationAbstract                         $app  Application
+     * @param array{path?:string, lang?:string, app?:int} $data Additional data
      *
      * @return array
      *
@@ -67,7 +67,7 @@ final class Installer extends InstallerAbstract
         }
 
         $navData = \json_decode($navFile, true);
-        if ($navData === false) {
+        if (!\is_array($navData)) {
             throw new \Exception(); // @codeCoverageIgnore
         }
 
@@ -95,22 +95,24 @@ final class Installer extends InstallerAbstract
     private static function installNavigationLanguage(string $path, string $appName) : void
     {
         $files = \scandir($path);
-        if ($files !== false) {
-            foreach ($files as $file) {
-                if (\stripos($file, 'Navigation') !== 0) {
-                    continue;
-                }
+        if ($files === false) {
+            return;
+        }
 
-                $localization = include \rtrim($path, '/') . '/' . $file;
-
-                if (!\is_file($langPath = __DIR__ . '/../../../Web/' . $appName . '/lang/' . $file)) {
-                    \copy(__DIR__ . '/Install/NavigationSkeleton.php', $langPath);
-                }
-
-                $base = include $langPath;
-                $new  = \array_merge($base, $localization);
-                \file_put_contents($langPath, '<?php return ' . ArrayParser::serializeArray($new) . ';');
+        foreach ($files as $file) {
+            if (\stripos($file, 'Navigation') !== 0) {
+                continue;
             }
+
+            $localization = include \rtrim($path, '/') . '/' . $file;
+
+            if (!\is_file($langPath = __DIR__ . '/../../../Web/' . $appName . '/lang/' . $file)) {
+                \copy(__DIR__ . '/Install/NavigationSkeleton.php', $langPath);
+            }
+
+            $base = include $langPath;
+            $new  = \array_merge($base, $localization);
+            \file_put_contents($langPath, '<?php return ' . ArrayParser::serializeArray($new) . ';');
         }
     }
 
