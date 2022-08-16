@@ -30,7 +30,7 @@ if (isset($this->nav[NavigationType::SIDE])) : ?>
                     <?php if (isset($parent['nav_icon'])) : ?>
                         <i class="<?= $this->printHtml($parent['nav_icon']); ?>"></i>
                     <?php endif; ?>
-                    <span><?= $this->getHtml($parent['nav_name'], 'Navigation'); ?></span><i class="fa fa-chevron-right expand"></i></label>
+                    <span><?= $this->getHtml($parent['nav_name'], 'Navigation'); ?></span><i class="fa lni lni-chevron-right expand"></i></label>
                     <?php if (isset($this->nav[NavigationType::SIDE][LinkType::LINK])) :
                         foreach ($this->nav[NavigationType::SIDE][LinkType::LINK] as $key2 => $link) :
                             if ($link['nav_parent'] === $key) :
