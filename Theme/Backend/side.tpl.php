@@ -24,7 +24,7 @@ if (isset($this->nav[NavigationType::SIDE])) : ?>
         <?php
         $uriPath = $this->request->uri->getPath();
         foreach ($this->nav[NavigationType::SIDE][LinkType::CATEGORY] as $key => $parent) : ?>
-        <li><input class="oms-ui-state" id="nav-<?= $this->printHtml($parent['nav_name']); ?>" type="checkbox">
+        <li><input name="category-<?= $key; ?>" class="oms-ui-state" id="nav-<?= $this->printHtml($parent['nav_name']); ?>" type="checkbox">
             <ul>
                 <li><label for="nav-<?= $this->printHtml($parent['nav_name']); ?>">
                     <?php if (isset($parent['nav_icon'])) : ?>
