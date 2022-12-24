@@ -54,7 +54,19 @@ echo $this->getData('nav')->render();
                         <label>
                             <i class="filter fa fa-filter"></i>
                         </label>
-                    <td><?= $this->getHtml('Name'); ?>
+                    <td><?= $this->getHtml('Order'); ?>
+                        <label for="navElements-sort-1">
+                            <input type="radio" name="navElements-sort" id="navElements-sort-1">
+                            <i class="sort-asc fa fa-chevron-up"></i>
+                        </label>
+                        <label for="navElements-sort-2">
+                            <input type="radio" name="navElements-sort" id="navElements-sort-2">
+                            <i class="sort-desc fa fa-chevron-down"></i>
+                        </label>
+                        <label>
+                            <i class="filter fa fa-filter"></i>
+                        </label>
+                    <td class="wf-100"><?= $this->getHtml('Name'); ?>
                         <label for="navElements-sort-1">
                             <input type="radio" name="navElements-sort" id="navElements-sort-1">
                             <i class="sort-asc fa fa-chevron-up"></i>
@@ -87,10 +99,11 @@ echo $this->getData('nav')->render();
                                 <input id="iActive-<?= $c; ?>" type="checkbox" name="active_route" value="<?= $this->printHtml($nav->uri); ?>"<?= true ? ' checked' : ''; ?>>
                                 <span class="checkmark"></span>
                             </label>
-                        <td><?= $apps[$nav->app]?->name; ?>
+                        <td><?= $this->printHtml($apps[$nav->app]?->name); ?>
                         <td><?= $nav->id; ?>
-                        <td><?= $nav->name; ?>
-                        <td><?= $nav->uri; ?>
+                        <td><?= $nav->order; ?>
+                        <td><?= $this->printHtml($nav->name); ?>
+                        <td><?= $this->printHtml($nav->uri); ?>
                     <?php endforeach; ?>
             </table>
         </div>
