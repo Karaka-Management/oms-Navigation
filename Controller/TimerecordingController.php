@@ -46,7 +46,7 @@ final class TimerecordingController extends Controller
         $nav = Navigation::getInstance($request,
             $this->app->accountManager->get($request->header->account),
             $this->app->dbPool,
-            $this->app->orgId,
+            $this->app->unitId,
             $this->app->appName
         );
 
@@ -75,7 +75,7 @@ final class TimerecordingController extends Controller
             $request,
             $this->app->accountManager->get($request->header->account),
             $this->app->dbPool,
-            $this->app->orgId,
+            $this->app->unitId,
             $this->app->appName
         );
 
@@ -137,7 +137,7 @@ final class TimerecordingController extends Controller
         $nav = Navigation::getInstance($request,
             $this->app->accountManager->get($request->header->account),
             $this->app->dbPool,
-            $this->app->orgId,
+            $this->app->unitId,
             $this->app->appName
         );
 
