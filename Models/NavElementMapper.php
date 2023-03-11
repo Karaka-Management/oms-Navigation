@@ -75,7 +75,7 @@ final class NavElementMapper extends DataMapperFactory
      * @var string
      * @since 1.0.0
      */
-    public const PRIMARYFIELD ='nav_id';
+    public const PRIMARYFIELD = 'nav_id';
 
     /**
      * Autoincrement primary field.

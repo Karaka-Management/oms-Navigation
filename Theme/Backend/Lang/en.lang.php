@@ -20,4 +20,8 @@ return ['Navigation' => [
     'Subtype'  => 'Subtype',
     'Type'     => 'Type',
     'Uri'      => 'Uri',
+    'Order'      => 'Order',
+    'Link'      => 'Link',
+    'App'      => 'App',
+    'Active'      => 'Active',
 ]];
