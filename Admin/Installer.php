@@ -6,7 +6,7 @@
  *
  * @package   Modules\Navigation\Admin
  * @copyright Dennis Eichhorn
- * @license   OMS License 1.0
+ * @license   OMS License 2.0
  * @version   1.0.0
  * @link      https://jingga.app
  */
@@ -14,19 +14,19 @@ declare(strict_types=1);
 
 namespace Modules\Navigation\Admin;
 
-use Modules\Navigation\Models\NavElement;
-use Modules\Navigation\Models\NavElementMapper;
 use phpOMS\Application\ApplicationAbstract;
-use phpOMS\DataStorage\Database\DatabasePool;
+use phpOMS\Message\Http\HttpRequest;
+use phpOMS\Message\Http\HttpResponse;
 use phpOMS\Module\InstallerAbstract;
 use phpOMS\System\File\PathException;
+use phpOMS\Uri\HttpUri;
 use phpOMS\Utils\Parser\Php\ArrayParser;
 
 /**
  * Installer class.
  *
  * @package Modules\Navigation\Admin
- * @license OMS License 1.0
+ * @license OMS License 2.0
  * @link    https://jingga.app
  * @since   1.0.0
  */
@@ -76,7 +76,7 @@ final class Installer extends InstallerAbstract
         }
 
         foreach ($navData as $link) {
-            self::installLink($app->dbPool, $link, $data['app'] ?? null);
+            self::installLink($app, $link, $data['app'] ?? null);
         }
 
         return [];
@@ -119,42 +119,44 @@ final class Installer extends InstallerAbstract
     /**
      * Install navigation element.
      *
-     * @param DatabasePool $dbPool Database instance
-     * @param array        $data   Link info
-     * @param int          $app    App
+     * @param ApplicationAbstract $app   Application
+     * @param array               $data  Link info
+     * @param int                 $appId App
      *
      * @return void
      *
      * @since 1.0.0
      */
-    private static function installLink(DatabasePool $dbPool, array $data, int $app = null) : void
+    private static function installLink(ApplicationAbstract $app, array $data, int $appId = null) : void
     {
-        // @todo: implement in the api and then make an api call becuse we also want to be able to install
-        // navigation elements manually through the user interface?!
-        $navElement = new NavElement();
+        /** @var \Modules\Navigation\Controller\ApiController $module */
+        $module = $app->moduleManager->getModuleInstance('Navigation');
 
-        $navElement->id                 = (int) ($data['id'] ?? 0);
-        $navElement->pid                = \sha1(\str_replace('/', '', $data['pid'] ?? ''));
-        $navElement->pidRaw             = $data['pid'] ?? '';
-        $navElement->name               = (string) ($data['name'] ?? '');
-        $navElement->type               = (int) ($data['type'] ?? 1);
-        $navElement->subtype            = (int) ($data['subtype'] ?? 2);
-        $navElement->icon               = $data['icon'] ?? null;
-        $navElement->uri                = $data['uri'] ?? null;
-        $navElement->target             = (string) ($data['target'] ?? 'self');
-        $navElement->action             = $data['action'] ?? null;
-        $navElement->app                = (int) ($data['app'] ?? ($app ?? 2));
-        $navElement->from               = empty($from = (string) ($data['from'] ?? '')) ? '0' : $from;
-        $navElement->order              = (int) ($data['order'] ?? 1);
-        $navElement->parent             = (int) ($data['parent'] ?? 0);
-        $navElement->permissionPerm     = $data['permission']['permission'] ?? null;
-        $navElement->permissionCategory = $data['permission']['category'] ?? null;
-        $navElement->permissionElement  = $data['permission']['element'] ?? null;
+        $response = new HttpResponse();
+        $request  = new HttpRequest(new HttpUri(''));
 
-        NavElementMapper::create()->execute($navElement);
+        $request->header->account = 1;
+        $request->setData('id', (int) ($data['id'] ?? 0));
+        $request->setData('pid', $data['pid'] ?? '');
+        $request->setData('name', (string) ($data['name'] ?? ''));
+        $request->setData('type', (int) ($data['type'] ?? 1));
+        $request->setData('subtype', (int) ($data['subtype'] ?? 2));
+        $request->setData('icon', $data['icon'] ?? null);
+        $request->setData('uri', $data['uri'] ?? null);
+        $request->setData('target', (string) ($data['target'] ?? 'self'));
+        $request->setData('action', $data['action'] ?? null);
+        $request->setData('app', (int) ($data['app'] ?? ($appId ?? 2)));
+        $request->setData('from', empty($from = (string) ($data['from'] ?? '')) ? '0' : $from);
+        $request->setData('order', (int) ($data['order'] ?? 1));
+        $request->setData('parent', (int) ($data['parent'] ?? 0));
+        $request->setData('permission', $data['permission']['permission'] ?? null);
+        $request->setData('category', $data['permission']['category'] ?? null);
+        $request->setData('element', $data['permission']['element'] ?? null);
+
+        $module->apiNavElementCreate($request, $response);
 
         foreach ($data['children'] as $link) {
-            self::installLink($dbPool, $link, $app);
+            self::installLink($app, $link, $appId);
         }
     }
 }

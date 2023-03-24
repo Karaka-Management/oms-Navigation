@@ -6,7 +6,7 @@
  *
  * @package   tests
  * @copyright Dennis Eichhorn
- * @license   OMS License 1.0
+ * @license   OMS License 2.0
  * @version   1.0.0
  * @link      https://jingga.app
  */
@@ -63,7 +63,7 @@ final class SearchControllerTest extends \PHPUnit\Framework\TestCase
         $this->app->appSettings    = new CoreSettings();
         $this->app->moduleManager  = new ModuleManager($this->app, __DIR__ . '/../../../../Modules/');
         $this->app->dispatcher     = new Dispatcher($this->app);
-        $this->app->l11nManager    = new L11nManager($this->app->appName);
+        $this->app->l11nManager    = new L11nManager();
         $this->app->eventManager   = new EventManager($this->app->dispatcher);
         $this->app->eventManager->importFromFile(__DIR__ . '/../../../../Web/Api/Hooks.php');
 

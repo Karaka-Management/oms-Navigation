@@ -6,7 +6,7 @@
  *
  * @package   Modules\Auditor
  * @copyright Dennis Eichhorn
- * @license   OMS License 1.0
+ * @license   OMS License 2.0
  * @version   1.0.0
  * @link      https://jingga.app
  */
@@ -20,8 +20,8 @@ use phpOMS\Uri\UriFactory;
  */
 $navs = $this->getData('navigation') ?? [];
 
-$previous = empty($navs) ? 'admin/nav/list' : '{/lang}/{/app}/admin/nav/list?{?}&id=' . \reset($navs)->id . '&ptype=p';
-$next     = empty($navs) ? 'admin/nav/list' : '{/lang}/{/app}/admin/nav/list?{?}&id=' . \end($navs)->id . '&ptype=n';
+$previous = empty($navs) ? 'admin/nav/list' : '{/base}/admin/nav/list?{?}&id=' . \reset($navs)->id . '&ptype=p';
+$next     = empty($navs) ? 'admin/nav/list' : '{/base}/admin/nav/list?{?}&id=' . \end($navs)->id . '&ptype=n';
 
 echo $this->getData('nav')->render(); ?>
 
@@ -132,7 +132,7 @@ echo $this->getData('nav')->render(); ?>
                 <tbody>
                 <?php $count = 0;
                 foreach ($navs as $key => $nav) : ++$count;
-                    $url = UriFactory::build('{/lang}/{/app}/admin/module/settings?id=Navigation&nav=' . $nav->id); ?>
+                    $url = UriFactory::build('{/base}/admin/module/settings?id=Navigation&nav=' . $nav->id); ?>
                     <tr tabindex="0" data-href="<?= $url; ?>">
                         <td><a href="<?= $url; ?>"><?= $nav->id; ?></a>
                         <td><a href="<?= $url; ?>"><?= $nav->pidRaw; ?></a>

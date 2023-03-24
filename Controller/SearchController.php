@@ -6,7 +6,7 @@
  *
  * @package   Modules\Navigation
  * @copyright Dennis Eichhorn
- * @license   OMS License 1.0
+ * @license   OMS License 2.0
  * @version   1.0.0
  * @link      https://jingga.app
  */
@@ -27,7 +27,7 @@ use phpOMS\Uri\UriFactory;
  * Search class.
  *
  * @package Modules\Navigation
- * @license OMS License 1.0
+ * @license OMS License 2.0
  * @link    https://jingga.app
  * @since   1.0.0
  */
@@ -48,20 +48,20 @@ final class SearchController extends Controller
      */
     public function searchGoto(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
     {
-        $this->loadLanguage($request, $response, $request->getData('app'));
+        $this->loadLanguage($request, $response, $request->getDataString('app') ?? $this->app->appName);
 
         /** @var \Modules\Navigation\Models\NavElement[] $elements */
         $elements = NavElementMapper::getAll()->execute();
 
-        $searchIdStartPos = \stripos($request->getData('search'), ':');
+        $searchIdStartPos = \stripos($request->getDataString('search') ?? '', ':');
         $patternStartPos  = $searchIdStartPos === false ? -1 : \stripos(
-                $request->getData('search'),
+                $request->getDataString('search') ?? '',
                 ' ',
                 $searchIdStartPos
             );
 
         $search = \mb_strtolower(\substr(
-            $request->getData('search'),
+            $request->getDataString('search') ?? '',
             $patternStartPos + 1
         ));
 
