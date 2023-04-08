@@ -62,14 +62,14 @@ class Navigation
      * @param Account         $account Account
      * @param DatabasePool    $dbPool  Database pool
      * @param int             $unit    Unit
-     * @param string          $appName App name
+     * @param int             $appId   App id
      *
      * @since 1.0.0
      */
-    private function __construct(RequestAbstract $request, Account $account, DatabasePool $dbPool, int $unit, string $appName)
+    private function __construct(RequestAbstract $request, Account $account, DatabasePool $dbPool, int $unit, int $appId)
     {
         $this->dbPool = $dbPool;
-        $this->load($request->getHash(), $account, $unit, $appName);
+        $this->load($request->getHash(), $account, $unit, $appId);
     }
 
     /**
@@ -78,13 +78,13 @@ class Navigation
      * @param string[] $hashes  Request hashes
      * @param Account  $account Account
      * @param int      $unit    Unit
-     * @param string   $app     App name
+     * @param int   $app     App name
      *
      * @return void
      *
      * @since 1.0.0
      */
-    private function load(array $hashes, Account $account, int $unit, string $app) : void
+    private function load(array $hashes, Account $account, int $unit, int $app) : void
     {
         if (empty($this->nav)) {
             $this->nav = [];
@@ -161,7 +161,7 @@ class Navigation
      * @param Account         $account Account
      * @param DatabasePool    $dbPool  Database pool
      * @param int             $unit    Unit
-     * @param string          $appName App name
+     * @param int             $appId App name
      *
      * @return \Modules\Navigation\Models\Navigation
      *
@@ -169,14 +169,14 @@ class Navigation
      *
      * @since 1.0.0
      */
-    public static function getInstance(RequestAbstract $hashes = null, Account $account, DatabasePool $dbPool, int $unit, string $appName)
+    public static function getInstance(RequestAbstract $hashes = null, Account $account, DatabasePool $dbPool, int $unit, int $appId)
     {
         if (!isset(self::$instance)) {
             if (!isset($hashes)) {
                 throw new \Exception('Invalid parameters');
             }
 
-            self::$instance = new self($hashes, $account, $dbPool, $unit, $appName);
+            self::$instance = new self($hashes, $account, $dbPool, $unit, $appId);
         }
 
         return self::$instance;

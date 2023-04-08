@@ -55,7 +55,7 @@ final class BackendController extends Controller
             $this->app->accountManager->get($request->header->account),
             $this->app->dbPool,
             $this->app->unitId,
-            $this->app->appName
+            $this->app->appId
         );
 
         $navView = new NavigationView($this->app->l11nManager, $request, $response);
@@ -84,7 +84,7 @@ final class BackendController extends Controller
             $this->app->accountManager->get($request->header->account),
             $this->app->dbPool,
             $this->app->unitId,
-            $this->app->appName
+            $this->app->appId
         );
 
         $nav = new NavigationView($this->app->l11nManager, $request, $response);
@@ -150,7 +150,7 @@ final class BackendController extends Controller
             $this->app->accountManager->get($request->header->account),
             $this->app->dbPool,
             $this->app->unitId,
-            $this->app->appName
+            $this->app->appId
         );
 
         $navView = new NavigationView($this->app->l11nManager, $request, $response);

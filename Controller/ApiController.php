@@ -73,7 +73,7 @@ final class ApiController extends Controller
     private function validateNavElementCreate(RequestAbstract $request) : array
     {
         $val = [];
-        if (($val['name'] = empty($request->getData('name')))) {
+        if (($val['name'] = !$request->hasData('name'))) {
             return $val;
         }
 
