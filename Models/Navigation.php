@@ -78,7 +78,7 @@ class Navigation
      * @param string[] $hashes  Request hashes
      * @param Account  $account Account
      * @param int      $unit    Unit
-     * @param int   $app     App name
+     * @param int      $app     App name
      *
      * @return void
      *
@@ -161,7 +161,7 @@ class Navigation
      * @param Account         $account Account
      * @param DatabasePool    $dbPool  Database pool
      * @param int             $unit    Unit
-     * @param int             $appId App name
+     * @param int             $appId   App name
      *
      * @return \Modules\Navigation\Models\Navigation
      *
