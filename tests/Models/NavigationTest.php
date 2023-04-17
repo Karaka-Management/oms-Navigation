@@ -36,7 +36,7 @@ final class NavigationTest extends \PHPUnit\Framework\TestCase
         $request->createRequestHashs(1);
 
         $account   = AccountMapper::getWithPermissions(9999);
-        $this->nav = Navigation::getInstance($request, $account, $GLOBALS['dbpool'], 1, 'Backend');
+        $this->nav = Navigation::getInstance($request, $account, $GLOBALS['dbpool'], 1, 2);
     }
 
     /**
@@ -59,6 +59,6 @@ final class NavigationTest extends \PHPUnit\Framework\TestCase
         $this->expectException(\Exception::class);
 
         $account = AccountMapper::getWithPermissions(9999);
-        $nav     = Navigation::getInstance(null, $account, $GLOBALS['dbpool'], 1, 'Backend');
+        $nav     = Navigation::getInstance(null, $account, $GLOBALS['dbpool'], 1, 2);
     }
 }

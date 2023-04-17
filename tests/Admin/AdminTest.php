@@ -44,7 +44,7 @@ final class AdminTest extends \PHPUnit\Framework\TestCase
         $request->createRequestHashs(1);
 
         $account       = AccountMapper::getWithPermissions(1);
-        $nav           = Navigation::getInstance($request, $account, $GLOBALS['dbpool'], 1, 'Backend')->getNav();
+        $nav           = Navigation::getInstance($request, $account, $GLOBALS['dbpool'], 1, 2)->getNav();
 
         self::assertGreaterThan(0, \count($nav));
     }
