@@ -181,7 +181,7 @@ final class BackendController extends Controller
         $id = $request->getDataString('id') ?? '';
 
         $settings = SettingMapper::getAll()->where('module', $id)->execute();
-        if (!($settings instanceof NullSetting)) {
+        if ($settings->id > 0) {
             $view->setData('settings', !\is_array($settings) ? [$settings] : $settings);
         }
 
