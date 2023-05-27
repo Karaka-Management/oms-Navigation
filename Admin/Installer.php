@@ -57,7 +57,7 @@ final class Installer extends InstallerAbstract
     {
         try {
             $app->dbPool->get()->con->query('select 1 from `nav`');
-        } catch (\Exception $e) {
+        } catch (\Exception $_) {
             return []; // @codeCoverageIgnore
         }
 
