@@ -14,7 +14,6 @@ declare(strict_types=1);
 
 namespace Modules\Navigation\Controller;
 
-use Model\NullSetting;
 use Model\SettingMapper;
 use Modules\Admin\Models\AppMapper;
 use Modules\Navigation\Models\NavElementMapper;

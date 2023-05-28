@@ -21,7 +21,6 @@ use phpOMS\Message\NotificationLevel;
 use phpOMS\Message\RequestAbstract;
 use phpOMS\Message\ResponseAbstract;
 use phpOMS\Model\Message\FormValidation;
-use phpOMS\System\MimeType;
 
 /**
  * Api controller for the tasks module.
