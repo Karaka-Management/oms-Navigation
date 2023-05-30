@@ -175,17 +175,17 @@ final class BackendController extends Controller
     public function viewModuleSettings(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : RenderableInterface
     {
         $view = new View($this->app->l11nManager, $request, $response);
-        $view->addData('nav', $this->app->moduleManager->get('Navigation')->createNavigationMid(1000105001, $request, $response));
+        $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1000105001, $request, $response);
 
         $id = $request->getDataString('id') ?? '';
 
         $settings = SettingMapper::getAll()->where('module', $id)->execute();
         if ($settings->id > 0) {
-            $view->setData('settings', !\is_array($settings) ? [$settings] : $settings);
+            $view->data['settings'] = !\is_array($settings) ? [$settings] : $settings;
         }
 
         $navigation = NavElementMapper::getAll()->execute();
-        $view->setData('navigation', $navigation);
+        $view->data['navigation'] = $navigation;
 
         $view->setTemplate('/Modules/' . static::NAME . '/Admin/Settings/Theme/Backend/settings');
 
@@ -207,9 +207,9 @@ final class BackendController extends Controller
     {
         $view = new View($this->app->l11nManager, $request, $response);
         $view->setTemplate('/Modules/' . static::NAME . '/Admin/Settings/Theme/Backend/settings-nav');
-        $view->addData('nav', $this->app->moduleManager->get('Navigation')->createNavigationMid(1000105001, $request, $response));
+        $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1000105001, $request, $response);
 
-        $view->addData('nav-element', NavElementMapper::get()->where('id', (int) $request->getData('nav'))->execute());
+        $view->data['nav-element'] = NavElementMapper::get()->where('id', (int) $request->getData('nav'))->execute();
 
         return $view;
     }
@@ -229,10 +229,10 @@ final class BackendController extends Controller
     {
         $view = new View($this->app->l11nManager, $request, $response);
         $view->setTemplate('/Modules/Navigation/Admin/Settings/Theme/Backend/modules-nav-list');
-        $view->addData('nav', $this->app->moduleManager->get('Navigation')->createNavigationMid(1000105001, $request, $response));
+        $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1000105001, $request, $response);
 
         $module = $request->getDataString('id') ?? '';
-        $view->setData('module', $module);
+        $view->data['module'] = $module;
 
         $query = NavElementMapper::getAll()
             ->where('from', $module);
@@ -242,10 +242,10 @@ final class BackendController extends Controller
         }
 
         $activeNavElements = $query->execute();
-        $view->setData('navs', $activeNavElements);
+        $view->data['navs'] = $activeNavElements;
 
         $apps = AppMapper::getAll()->execute();
-        $view->setData('apps', $apps);
+        $view->data['apps'] = $apps;
 
         return $view;
     }
