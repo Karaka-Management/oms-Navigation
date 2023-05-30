@@ -113,7 +113,7 @@ final class BackendController extends Controller
     public function loadLanguage(RequestAbstract $request, ResponseAbstract $response) : void
     {
         $languages = $this->app->moduleManager->getLanguageFiles($request);
-        $langCode  = $response->getLanguage();
+        $langCode  = $response->header->l11n->language;
 
         // Add application navigation
         $languages[] = '/Web/' . ($this->app->appName) . '/lang/Navigation';

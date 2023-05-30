@@ -72,7 +72,7 @@ final class SearchController extends Controller
             }
 
             $name = \mb_strtolower($this->app->l11nManager->getText(
-                $response->getLanguage(),
+                $response->header->l11n->language,
                 'Navigation', '0',
                 $element->name,
             ));
@@ -109,7 +109,7 @@ final class SearchController extends Controller
     private function loadLanguage(RequestAbstract $request, ResponseAbstract $response, string $app) : void
     {
         $languages = $this->app->moduleManager->getLanguageFiles($request, $app);
-        $langCode  = $response->getLanguage();
+        $langCode  = $response->header->l11n->language;
 
         foreach ($languages as $path) {
             $path = __DIR__ . '/../../..' . $path . '.' . $langCode . '.lang.php';
