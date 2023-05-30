@@ -48,7 +48,7 @@ final class ApiController extends Controller
     public function apiNavElementCreate(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
     {
         if (!empty($val = $this->validateNavElementCreate($request))) {
-            $response->set('nav_element_create', new FormValidation($val));
+            $response->data['nav_element_create'] = new FormValidation($val);
             $response->header->status = RequestStatusCode::R_400;
 
             return;

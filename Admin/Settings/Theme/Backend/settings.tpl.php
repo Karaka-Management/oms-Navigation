@@ -18,12 +18,12 @@ use phpOMS\Uri\UriFactory;
  * @var \phpOMS\Views\View                      $this
  * @var \Modules\Navigation\Models\NavElement[] $navs
  */
-$navs = $this->getData('navigation') ?? [];
+$navs = $this->data['navigation'] ?? [];
 
 $previous = empty($navs) ? 'admin/nav/list' : '{/base}/admin/nav/list?{?}&id=' . \reset($navs)->id . '&ptype=p';
 $next     = empty($navs) ? 'admin/nav/list' : '{/base}/admin/nav/list?{?}&id=' . \end($navs)->id . '&ptype=n';
 
-echo $this->getData('nav')->render(); ?>
+echo $this->data['nav']->render(); ?>
 
 <div class="row">
     <div class="col-xs-12">

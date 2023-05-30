@@ -15,12 +15,12 @@ declare(strict_types=1);
 use phpOMS\Uri\UriFactory;
 
 $nav    = $this->getData('nav-element');
-$routes = $this->getData('routes') ?? [];
+$routes = $this->data['routes'] ?? [];
 
 /**
  * @var \phpOMS\Views\View $this
  */
-echo $this->getData('nav')->render(); ?>
+echo $this->data['nav']->render(); ?>
 
 <div class="row">
     <div class="col-xs-12">

@@ -15,10 +15,10 @@ declare(strict_types=1);
 /**
  * @var \phpOMS\Views\View $this
  */
-$navs = $this->getData('navs') ?? [];
-$apps = $this->getData('apps') ?? [];
+$navs = $this->data['navs'] ?? [];
+$apps = $this->data['apps'] ?? [];
 
-echo $this->getData('nav')->render();
+echo $this->data['nav']->render();
 ?>
 
 <div class="row">
