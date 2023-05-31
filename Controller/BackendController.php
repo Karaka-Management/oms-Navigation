@@ -174,7 +174,7 @@ final class BackendController extends Controller
      */
     public function viewModuleSettings(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : RenderableInterface
     {
-        $view = new View($this->app->l11nManager, $request, $response);
+        $view              = new View($this->app->l11nManager, $request, $response);
         $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1000105001, $request, $response);
 
         $id = $request->getDataString('id') ?? '';
@@ -184,7 +184,7 @@ final class BackendController extends Controller
             $view->data['settings'] = !\is_array($settings) ? [$settings] : $settings;
         }
 
-        $navigation = NavElementMapper::getAll()->execute();
+        $navigation               = NavElementMapper::getAll()->execute();
         $view->data['navigation'] = $navigation;
 
         $view->setTemplate('/Modules/' . static::NAME . '/Admin/Settings/Theme/Backend/settings');
@@ -231,7 +231,7 @@ final class BackendController extends Controller
         $view->setTemplate('/Modules/Navigation/Admin/Settings/Theme/Backend/modules-nav-list');
         $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1000105001, $request, $response);
 
-        $module = $request->getDataString('id') ?? '';
+        $module               = $request->getDataString('id') ?? '';
         $view->data['module'] = $module;
 
         $query = NavElementMapper::getAll()
@@ -241,10 +241,10 @@ final class BackendController extends Controller
             $query = $query->where('from', '0', connector: 'OR');
         }
 
-        $activeNavElements = $query->execute();
+        $activeNavElements  = $query->execute();
         $view->data['navs'] = $activeNavElements;
 
-        $apps = AppMapper::getAll()->execute();
+        $apps               = AppMapper::getAll()->execute();
         $view->data['apps'] = $apps;
 
         return $view;

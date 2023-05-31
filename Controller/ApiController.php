@@ -49,7 +49,7 @@ final class ApiController extends Controller
     {
         if (!empty($val = $this->validateNavElementCreate($request))) {
             $response->data['nav_element_create'] = new FormValidation($val);
-            $response->header->status = RequestStatusCode::R_400;
+            $response->header->status             = RequestStatusCode::R_400;
 
             return;
         }
