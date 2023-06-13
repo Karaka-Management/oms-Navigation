@@ -47,7 +47,7 @@ final class TimerecordingController extends Controller
             $this->app->accountManager->get($request->header->account),
             $this->app->dbPool,
             $this->app->unitId,
-            $this->app->appName
+            $this->app->appId
         );
 
         $navView = new NavigationView($this->app->l11nManager, $request, $response);
@@ -76,7 +76,7 @@ final class TimerecordingController extends Controller
             $this->app->accountManager->get($request->header->account),
             $this->app->dbPool,
             $this->app->unitId,
-            $this->app->appName
+            $this->app->appId
         );
 
         $nav = new \Modules\Navigation\Views\NavigationView($this->app->l11nManager, $request, $response);
@@ -138,7 +138,7 @@ final class TimerecordingController extends Controller
             $this->app->accountManager->get($request->header->account),
             $this->app->dbPool,
             $this->app->unitId,
-            $this->app->appName
+            $this->app->appId
         );
 
         $navView = new NavigationView($this->app->l11nManager, $request, $response);
