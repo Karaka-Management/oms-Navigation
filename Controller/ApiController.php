@@ -17,10 +17,8 @@ namespace Modules\Navigation\Controller;
 use Modules\Navigation\Models\NavElement;
 use Modules\Navigation\Models\NavElementMapper;
 use phpOMS\Message\Http\RequestStatusCode;
-use phpOMS\Message\NotificationLevel;
 use phpOMS\Message\RequestAbstract;
 use phpOMS\Message\ResponseAbstract;
-use phpOMS\Model\Message\FormValidation;
 
 /**
  * Api controller for the tasks module.
@@ -48,16 +46,15 @@ final class ApiController extends Controller
     public function apiNavElementCreate(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
     {
         if (!empty($val = $this->validateNavElementCreate($request))) {
-            $response->data['nav_element_create'] = new FormValidation($val);
-            $response->header->status             = RequestStatusCode::R_400;
+            $response->header->status = RequestStatusCode::R_400;
+            $this->createInvalidCreateResponse($request, $response, $val);
 
             return;
         }
 
         $navElement = $this->createNavElementFromRequest($request);
         $this->createModel($request->header->account, $navElement, NavElementMapper::class, 'nav_element', $request->getOrigin());
-
-        $this->fillJsonResponse($request, $response, NotificationLevel::OK, 'Navigation Element', 'Element successfully created', $navElement);
+        $this->createStandardCreateResponse($request, $response, $navElement);
     }
 
     /**
