@@ -92,12 +92,12 @@ final class ApiController extends Controller
         $navElement->id                 = (int) $request->getData('id');
         $navElement->pid                = \sha1(\str_replace('/', '', $request->getDataString('pid') ?? ''));
         $navElement->pidRaw             = $request->getDataString('pid') ?? '';
-        $navElement->name               = (string) ($request->getDataString('name') ?? '');
+        $navElement->name               = $request->getDataString('name') ?? '';
         $navElement->type               = $request->getDataInt('type') ?? 1;
         $navElement->subtype            = $request->getDataInt('subtype') ?? 2;
         $navElement->icon               = $request->getDataString('icon');
         $navElement->uri                = $request->getDataString('uri');
-        $navElement->target             = (string) ($request->getData('target') ?? 'self');
+        $navElement->target             = $request->getDataString('target') ?? 'self';
         $navElement->action             = $request->getDataString('action');
         $navElement->app                = $request->getDataInt('app') ?? 2;
         $navElement->from               = empty($from = $request->getDataString('from') ?? '') ? '0' : $from;
