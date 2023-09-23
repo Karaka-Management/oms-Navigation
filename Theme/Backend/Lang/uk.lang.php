@@ -13,7 +13,11 @@
 declare(strict_types=1);
 
 return ['Navigation' => [
+    'Active'   => '',
+    'App'      => '',
+    'Link'     => '',
     'Name'     => 'Назва',
+    'Order'    => '',
     'PageId'   => 'Сторінка',
     'Parent'   => 'Батько',
     'Provider' => 'Провайдер',

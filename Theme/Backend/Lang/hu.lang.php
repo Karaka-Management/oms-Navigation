@@ -13,7 +13,11 @@
 declare(strict_types=1);
 
 return ['Navigation' => [
+    'Active'   => '',
+    'App'      => '',
+    'Link'     => '',
     'Name'     => 'Név',
+    'Order'    => '',
     'PageId'   => 'Oldalsó',
     'Parent'   => 'Szülő',
     'Provider' => 'Szolgáltató',

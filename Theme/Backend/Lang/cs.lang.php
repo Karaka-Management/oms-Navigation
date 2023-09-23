@@ -13,7 +13,11 @@
 declare(strict_types=1);
 
 return ['Navigation' => [
+    'Active'   => '',
+    'App'      => '',
+    'Link'     => '',
     'Name'     => 'název',
+    'Order'    => '',
     'PageId'   => 'Pageid.',
     'Parent'   => 'Rodič',
     'Provider' => 'Poskytovatele',

@@ -13,7 +13,11 @@
 declare(strict_types=1);
 
 return ['Navigation' => [
+    'Active'   => '',
+    'App'      => '',
+    'Link'     => '',
     'Name'     => 'Name',
+    'Order'    => '',
     'PageId'   => 'PageId',
     'Parent'   => 'Elternteil',
     'Provider' => 'Anbieter',

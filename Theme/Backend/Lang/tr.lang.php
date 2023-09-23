@@ -13,7 +13,11 @@
 declare(strict_types=1);
 
 return ['Navigation' => [
+    'Active'   => '',
+    'App'      => '',
+    'Link'     => '',
     'Name'     => 'İsim',
+    'Order'    => '',
     'PageId'   => 'Çevre',
     'Parent'   => 'Ebeveyn',
     'Provider' => 'Sağlayıcı',

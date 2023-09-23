@@ -13,7 +13,11 @@
 declare(strict_types=1);
 
 return ['Navigation' => [
+    'Active'   => '',
+    'App'      => '',
+    'Link'     => '',
     'Name'     => 'Navn',
+    'Order'    => '',
     'PageId'   => 'Sidelid',
     'Parent'   => 'Foreldre',
     'Provider' => 'Forsørger',

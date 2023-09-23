@@ -13,7 +13,11 @@
 declare(strict_types=1);
 
 return ['Navigation' => [
+    'Active'   => '',
+    'App'      => '',
+    'Link'     => '',
     'Name'     => '名称',
+    'Order'    => '',
     'PageId'   => '翻译',
     'Parent'   => '父母',
     'Provider' => '提供者',

@@ -13,7 +13,11 @@
 declare(strict_types=1);
 
 return ['Navigation' => [
+    'Active'   => '',
+    'App'      => '',
+    'Link'     => '',
     'Name'     => 'Ονομα',
+    'Order'    => '',
     'PageId'   => 'Σελίδας',
     'Parent'   => 'Μητρική εταιρεία',
     'Provider' => 'Προμηθευτής',
