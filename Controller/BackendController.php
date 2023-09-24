@@ -182,7 +182,7 @@ final class BackendController extends Controller
         /** @var \Model\Setting[] $settings */
         $settings = SettingMapper::getAll()->where('module', $id)->execute();
         if (!empty($settings)) {
-            $view->data['settings'] = !\is_array($settings) ? [$settings] : $settings;
+            $view->data['settings'] = \is_array($settings) ? $settings : [$settings];
         }
 
         $navigation               = NavElementMapper::getAll()->execute();

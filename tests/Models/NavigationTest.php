@@ -45,7 +45,7 @@ final class NavigationTest extends \PHPUnit\Framework\TestCase
      */
     public function testDefault() : void
     {
-        self::assertTrue(\count($this->nav->getNav()) > 0);
+        self::assertTrue(!empty($this->nav->getNav()));
     }
 
     /**
