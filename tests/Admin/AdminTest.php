@@ -28,7 +28,7 @@ final class AdminTest extends \PHPUnit\Framework\TestCase
 
     protected const URI_LOAD = '';
 
-    use \Build\Helper\ModuleTestTrait;
+    use \tests\Modules\ModuleTestTrait;
 
     /**
      * Test if navigation model works correct
