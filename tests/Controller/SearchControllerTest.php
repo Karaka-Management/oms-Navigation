@@ -98,7 +98,7 @@ final class SearchControllerTest extends \PHPUnit\Framework\TestCase
     public function testGotoSearch() : void
     {
         $response = new HttpResponse();
-        $request  = new HttpRequest(new HttpUri('https://127.0.0.1/en/backend'));
+        $request  = new HttpRequest(new HttpUri(''));
         $request->createRequestHashs(2);
 
         $request->header->account = 1;
@@ -106,7 +106,7 @@ final class SearchControllerTest extends \PHPUnit\Framework\TestCase
         $request->setData('app', 'Backend');
 
         $this->module->searchGoto($request, $response);
-        self::assertInstanceOf(Redirect::class, $response->get('https://127.0.0.1/en/backend'));
+        self::assertInstanceOf(Redirect::class, $response->get(''));
     }
 
     /**
@@ -116,7 +116,7 @@ final class SearchControllerTest extends \PHPUnit\Framework\TestCase
     public function testInvalidGotoSearch() : void
     {
         $response = new HttpResponse();
-        $request  = new HttpRequest(new HttpUri('https://127.0.0.1/en/backend'));
+        $request  = new HttpRequest(new HttpUri(''));
         $request->createRequestHashs(0);
 
         $request->header->account = 1;
