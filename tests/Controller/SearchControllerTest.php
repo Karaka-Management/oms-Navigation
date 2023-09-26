@@ -102,7 +102,7 @@ final class SearchControllerTest extends \PHPUnit\Framework\TestCase
         $request->createRequestHashs(2);
 
         $request->header->account = 1;
-        $request->setData('search', ':goto General');
+        $request->setData('search', ':goto Groups');
         $request->setData('app', 'Backend');
 
         $this->module->searchGoto($request, $response);
