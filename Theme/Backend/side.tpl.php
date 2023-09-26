@@ -20,7 +20,7 @@ use \Modules\Navigation\Models\NavigationType;
  */
 if (isset($this->nav[NavigationType::SIDE])) : ?>
 <div id="nav-side-outer" class="oms-ui-state">
-    <ul id="nav-side-inner" class="nav" role="navigation">
+    <ul id="nav-side-inner" class="nav" role="list">
         <?php
         $uriPath = $this->request->uri->getPath();
         foreach ($this->nav[NavigationType::SIDE][LinkType::CATEGORY] as $key => $parent) : ?>

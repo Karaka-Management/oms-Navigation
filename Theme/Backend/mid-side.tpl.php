@@ -23,7 +23,7 @@ if (isset($this->nav[\Modules\Navigation\Models\NavigationType::CONTENT_SIDE])) 
          . '<i class="fa fa-minus min"></i><i class="fa fa-plus max vh"></i>'
          . '</h1>'
          . '<div class="bc-1">'
-         . '<ul id="ms-nav" role="navigation">';
+         . '<ul id="ms-nav" role="list">';
 
     foreach ($this->nav[\Modules\Navigation\Models\NavigationType::CONTENT_SIDE] as $key => $parent) {
         foreach ($parent as $link) {

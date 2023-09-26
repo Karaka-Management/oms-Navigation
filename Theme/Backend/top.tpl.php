@@ -18,7 +18,7 @@ use Modules\Navigation\Models\NavigationType;
  * @var \Modules\Navigation\Views\NavigationView $this
  */
 if (isset($this->nav[NavigationType::TOP])) : ?>
-    <ul id="t-nav" role="navigation">
+    <ul id="t-nav" role="list">
         <?php $unread = $this->data['unread'];
         foreach ($this->nav[NavigationType::TOP] as $key => $parent) :
         foreach ($parent as $id => $link) : ?>
