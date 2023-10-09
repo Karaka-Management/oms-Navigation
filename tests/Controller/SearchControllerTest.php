@@ -106,7 +106,7 @@ final class SearchControllerTest extends \PHPUnit\Framework\TestCase
         $request->setData('app', 'Backend');
 
         $this->module->searchGoto($request, $response);
-        self::assertInstanceOf(Redirect::class, $response->get(''));
+        self::assertInstanceOf(Redirect::class, $response->getData(''));
     }
 
     /**
