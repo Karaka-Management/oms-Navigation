@@ -21,7 +21,7 @@ if (isset($this->nav[\Modules\Navigation\Models\NavigationType::CONTENT_SIDE])) 
     <div>
         <h1>
             <?= $this->getHtml('Navigation', 'Navigation'); ?>
-            <i class="fa fa-minus min"></i><i class="fa fa-plus max vh"></i>
+            <i class="g-icon min">remove</i><i class="g-icon max vh">add</i>
         </h1>
         <div class="bc-1">
             <ul id="ms-nav" role="list">

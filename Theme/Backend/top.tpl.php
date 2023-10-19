@@ -28,7 +28,12 @@ if (isset($this->nav[NavigationType::TOP])) : ?>
             href="<?= \phpOMS\Uri\UriFactory::build($link['nav_uri']); ?>"
             <?= $link['nav_action'] !== null ? ' data-action=\'' . $link['nav_action'] . '\'' : ''; ?>>
                 <?php if (isset($link['nav_icon'])) : ?>
-                    <i class="<?= $this->printHtml($link['nav_icon']); ?> infoIcon"><?php if (isset($unread[$link['nav_from']]) && $unread[$link['nav_from']] > 0) : ?><span class="badge"><?= $unread[$link['nav_from']]; ?></span><?php endif; ?></i>
+                    <i class="g-icon infoIcon">
+                        <?= $this->printHtml($link['nav_icon']); ?>
+                        <?php if (isset($unread[$link['nav_from']]) && $unread[$link['nav_from']] > 0) : ?>
+                            <span class="badge"><?= $unread[$link['nav_from']]; ?></span>
+                        <?php endif; ?>
+                    </i>
                 <?php endif; ?>
                 <span class="link"><?= $this->getHtml($link['nav_name'], 'Navigation'); ?><span></a>
         <?php endforeach; endforeach; ?>
