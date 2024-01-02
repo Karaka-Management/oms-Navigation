@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace Modules\Navigation\Controller;
 
+use Modules\Navigation\Models\LinkStatus;
 use Modules\Navigation\Models\NavElement;
 use Modules\Navigation\Models\NavElementMapper;
 use phpOMS\Message\Http\RequestStatusCode;
@@ -106,6 +107,7 @@ final class ApiController extends Controller
         $navElement->permissionPerm     = $request->getDataInt('permission');
         $navElement->permissionCategory = $request->getDataInt('category');
         $navElement->permissionElement  = $request->getDataInt('element');
+        $navElement->status             = $request->getDataInt('status') ?? LinkStatus::ACTIVE;
 
         return $navElement;
     }

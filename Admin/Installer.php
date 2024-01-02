@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace Modules\Navigation\Admin;
 
+use Modules\Navigation\Models\LinkStatus;
 use phpOMS\Application\ApplicationAbstract;
 use phpOMS\Message\Http\HttpRequest;
 use phpOMS\Message\Http\HttpResponse;
@@ -152,6 +153,7 @@ final class Installer extends InstallerAbstract
         $request->setData('permission', $data['permission']['permission'] ?? null);
         $request->setData('category', $data['permission']['category'] ?? null);
         $request->setData('element', $data['permission']['element'] ?? null);
+        $request->setData('status', $data['status'] ?? LinkStatus::ACTIVE);
 
         $module->apiNavElementCreate($request, $response);
 
