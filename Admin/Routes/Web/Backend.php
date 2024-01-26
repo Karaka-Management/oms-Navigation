@@ -28,7 +28,7 @@ return [
             ],
         ],
     ],
-    '^.*/admin/module/navigation/list\?.*$' => [
+    '^.*/admin/module/navigation/list(\?.*$|$)' => [
         [
             'dest'       => '\Modules\Navigation\Controller\BackendController:viewModuleNavigationList',
             'verb'       => RouteVerb::GET,

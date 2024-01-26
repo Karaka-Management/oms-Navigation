@@ -71,20 +71,20 @@ class NavElement
     public string $name = '';
 
     /**
-     * Link type.
-     *
-     * @var int
-     * @since 1.0.0
-     */
-    public int $type = LinkType::LINK;
-
-    /**
      * Navigation type (location of the link)
      *
      * @var int
      * @since 1.0.0
      */
-    public int $subtype = NavigationType::SIDE;
+    public int $type = NavigationType::SIDE;
+
+    /**
+     * Link type.
+     *
+     * @var int
+     * @since 1.0.0
+     */
+    public int $subtype = LinkType::LINK;
 
     /**
      * Icon string (css string for icon).

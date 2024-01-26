@@ -37,7 +37,7 @@ class Navigation
      * @var array
      * @since 1.0.0
      */
-    private array $nav = [];
+    public array $nav = [];
 
     /**
      * Singleton instance.
@@ -45,7 +45,7 @@ class Navigation
      * @var null|self
      * @since 1.0.0
      */
-    private static ?self $instance = null;
+    public static ?self $instance = null;
 
     /**
      * Database pool.
@@ -169,7 +169,7 @@ class Navigation
      *
      * @since 1.0.0
      */
-    public static function getInstance(RequestAbstract $hashes = null, Account $account, DatabasePool $dbPool, int $unit, int $appId)
+    public static function getInstance(?RequestAbstract $hashes = null, Account $account, DatabasePool $dbPool, int $unit, int $appId)
     {
         if (!isset(self::$instance)) {
             if (!isset($hashes)) {

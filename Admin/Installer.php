@@ -15,12 +15,13 @@ declare(strict_types=1);
 namespace Modules\Navigation\Admin;
 
 use Modules\Navigation\Models\LinkStatus;
+use Modules\Navigation\Models\LinkType;
+use Modules\Navigation\Models\NavigationType;
 use phpOMS\Application\ApplicationAbstract;
 use phpOMS\Message\Http\HttpRequest;
 use phpOMS\Message\Http\HttpResponse;
 use phpOMS\Module\InstallerAbstract;
 use phpOMS\System\File\PathException;
-use phpOMS\Uri\HttpUri;
 use phpOMS\Utils\Parser\Php\ArrayParser;
 
 /**
@@ -128,20 +129,20 @@ final class Installer extends InstallerAbstract
      *
      * @since 1.0.0
      */
-    private static function installLink(ApplicationAbstract $app, array $data, int $appId = null) : void
+    private static function installLink(ApplicationAbstract $app, array $data, ?int $appId = null) : void
     {
         /** @var \Modules\Navigation\Controller\ApiController $module */
         $module = $app->moduleManager->getModuleInstance('Navigation');
 
         $response = new HttpResponse();
-        $request  = new HttpRequest(new HttpUri(''));
+        $request  = new HttpRequest();
 
         $request->header->account = 1;
         $request->setData('id', (int) ($data['id'] ?? 0));
         $request->setData('pid', $data['pid'] ?? '');
         $request->setData('name', (string) ($data['name'] ?? ''));
-        $request->setData('type', (int) ($data['type'] ?? 1));
-        $request->setData('subtype', (int) ($data['subtype'] ?? 2));
+        $request->setData('type', (int) ($data['type'] ?? NavigationType::SIDE));
+        $request->setData('subtype', (int) ($data['subtype'] ?? LinkType::LINK));
         $request->setData('icon', $data['icon'] ?? null);
         $request->setData('uri', $data['uri'] ?? null);
         $request->setData('target', (string) ($data['target'] ?? 'self'));

@@ -30,7 +30,6 @@ use phpOMS\Model\Message\Redirect;
 use phpOMS\Module\ModuleAbstract;
 use phpOMS\Module\ModuleManager;
 use phpOMS\Router\WebRouter;
-use phpOMS\Uri\HttpUri;
 use phpOMS\Utils\TestUtils;
 
 /**
@@ -57,14 +56,14 @@ final class SearchControllerTest extends \PHPUnit\Framework\TestCase
             protected string $appName = 'Search';
         };
 
-        $this->app->dbPool          = $GLOBALS['dbpool'];
-        $this->app->unitId          = 1;
-        $this->app->accountManager  = new AccountManager($GLOBALS['session']);
-        $this->app->appSettings     = new CoreSettings();
-        $this->app->moduleManager   = new ModuleManager($this->app, __DIR__ . '/../../../../Modules/');
-        $this->app->dispatcher      = new Dispatcher($this->app);
-        $this->app->l11nManager     = new L11nManager();
-        $this->app->eventManager    = new EventManager($this->app->dispatcher);
+        $this->app->dbPool         = $GLOBALS['dbpool'];
+        $this->app->unitId         = 1;
+        $this->app->accountManager = new AccountManager($GLOBALS['session']);
+        $this->app->appSettings    = new CoreSettings();
+        $this->app->moduleManager  = new ModuleManager($this->app, __DIR__ . '/../../../../Modules/');
+        $this->app->dispatcher     = new Dispatcher($this->app);
+        $this->app->l11nManager    = new L11nManager();
+        $this->app->eventManager   = new EventManager($this->app->dispatcher);
         $this->app->eventManager->importFromFile(__DIR__ . '/../../../../Web/Api/Hooks.php');
 
         $account = new Account();
@@ -98,7 +97,7 @@ final class SearchControllerTest extends \PHPUnit\Framework\TestCase
     public function testGotoSearch() : void
     {
         $response = new HttpResponse();
-        $request  = new HttpRequest(new HttpUri(''));
+        $request  = new HttpRequest();
         $request->createRequestHashs(2);
 
         $request->header->account = 1;
@@ -116,7 +115,7 @@ final class SearchControllerTest extends \PHPUnit\Framework\TestCase
     public function testInvalidGotoSearch() : void
     {
         $response = new HttpResponse();
-        $request  = new HttpRequest(new HttpUri(''));
+        $request  = new HttpRequest();
         $request->createRequestHashs(0);
 
         $request->header->account = 1;

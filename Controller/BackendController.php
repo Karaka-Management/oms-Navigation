@@ -59,7 +59,7 @@ final class BackendController extends Controller
 
         $navView = new NavigationView($this->app->l11nManager, $request, $response);
         $navView->setTemplate('/Modules/Navigation/Theme/Backend/mid');
-        $navView->setNav($nav->getNav());
+        $navView->nav    = $nav->nav;
         $navView->parent = $pageId;
 
         return $navView;
@@ -86,15 +86,15 @@ final class BackendController extends Controller
             $this->app->appId
         );
 
-        $nav = new NavigationView($this->app->l11nManager, $request, $response);
-        $nav->setNav($navObj->getNav());
+        $nav      = new NavigationView($this->app->l11nManager, $request, $response);
+        $nav->nav = $navObj->nav;
 
         $unread = [];
         foreach ($this->receiving as $receiving) {
             $unread[$receiving] = $this->app->moduleManager->get($receiving)->openNav($request->header->account);
         }
 
-        $nav->setData('unread', $unread);
+        $nav->data['unread'] = $unread;
 
         return $nav;
     }
@@ -155,7 +155,7 @@ final class BackendController extends Controller
         $navView = new NavigationView($this->app->l11nManager, $request, $response);
 
         $navView->setTemplate('/Modules/Navigation/Theme/Backend/splash');
-        $navView->setNav($nav->getNav());
+        $navView->nav    = $nav->nav;
         $navView->parent = $pageId;
 
         return $navView;

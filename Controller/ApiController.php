@@ -15,8 +15,10 @@ declare(strict_types=1);
 namespace Modules\Navigation\Controller;
 
 use Modules\Navigation\Models\LinkStatus;
+use Modules\Navigation\Models\LinkType;
 use Modules\Navigation\Models\NavElement;
 use Modules\Navigation\Models\NavElementMapper;
+use Modules\Navigation\Models\NavigationType;
 use phpOMS\Message\Http\RequestStatusCode;
 use phpOMS\Message\RequestAbstract;
 use phpOMS\Message\ResponseAbstract;
@@ -94,8 +96,8 @@ final class ApiController extends Controller
         $navElement->pid                = \sha1(\str_replace('/', '', $request->getDataString('pid') ?? ''));
         $navElement->pidRaw             = $request->getDataString('pid') ?? '';
         $navElement->name               = $request->getDataString('name') ?? '';
-        $navElement->type               = $request->getDataInt('type') ?? 1;
-        $navElement->subtype            = $request->getDataInt('subtype') ?? 2;
+        $navElement->type               = NavigationType::tryFromValue($request->getDataInt('type')) ?? NavigationType::SIDE;
+        $navElement->subtype            = LinkType::tryFromValue($request->getDataInt('subtype')) ?? LinkType::LINK;
         $navElement->icon               = $request->getDataString('icon');
         $navElement->uri                = $request->getDataString('uri');
         $navElement->target             = $request->getDataString('target') ?? 'self';
@@ -107,7 +109,7 @@ final class ApiController extends Controller
         $navElement->permissionPerm     = $request->getDataInt('permission');
         $navElement->permissionCategory = $request->getDataInt('category');
         $navElement->permissionElement  = $request->getDataInt('element');
-        $navElement->status             = $request->getDataInt('status') ?? LinkStatus::ACTIVE;
+        $navElement->status             = LinkStatus::tryFromValue($request->getDataInt('status')) ?? LinkStatus::ACTIVE;
 
         return $navElement;
     }

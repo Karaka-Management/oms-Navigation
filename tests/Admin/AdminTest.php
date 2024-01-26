@@ -43,8 +43,8 @@ final class AdminTest extends \PHPUnit\Framework\TestCase
         $request = new HttpRequest(new HttpUri('http://127.0.0.1/en/backend'));
         $request->createRequestHashs(1);
 
-        $account       = AccountMapper::getWithPermissions(1);
-        $nav           = Navigation::getInstance($request, $account, $GLOBALS['dbpool'], 1, 2)->getNav();
+        $account = AccountMapper::getWithPermissions(1);
+        $nav     = Navigation::getInstance($request, $account, $GLOBALS['dbpool'], 1, 2)->getNav();
 
         self::assertGreaterThan(0, \count($nav));
     }
