@@ -157,11 +157,11 @@ class Navigation
     /**
      * Get instance.
      *
-     * @param RequestAbstract $hashes  Request hashes
-     * @param Account         $account Account
-     * @param DatabasePool    $dbPool  Database pool
-     * @param int             $unit    Unit
-     * @param int             $appId   App name
+     * @param null|RequestAbstract $hashes  Request hashes
+     * @param Account              $account Account
+     * @param DatabasePool         $dbPool  Database pool
+     * @param int                  $unit    Unit
+     * @param int                  $appId   App name
      *
      * @return \Modules\Navigation\Models\Navigation
      *
@@ -169,7 +169,7 @@ class Navigation
      *
      * @since 1.0.0
      */
-    public static function getInstance(?RequestAbstract $hashes = null, Account $account, DatabasePool $dbPool, int $unit, int $appId)
+    public static function getInstance(?RequestAbstract $hashes, Account $account, DatabasePool $dbPool, int $unit, int $appId)
     {
         if (!isset(self::$instance)) {
             if (!isset($hashes)) {

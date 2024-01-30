@@ -43,7 +43,8 @@ final class TimerecordingController extends Controller
      */
     public function createNavigationMid(int $pageId, RequestAbstract $request, ResponseAbstract $response) : NavigationView
     {
-        $nav = Navigation::getInstance($request,
+        $nav = Navigation::getInstance(
+            $request,
             $this->app->accountManager->get($request->header->account),
             $this->app->dbPool,
             $this->app->unitId,
