@@ -132,7 +132,7 @@ final class Installer extends InstallerAbstract
     private static function installLink(ApplicationAbstract $app, array $data, ?int $appId = null) : void
     {
         /** @var \Modules\Navigation\Controller\ApiController $module */
-        $module = $app->moduleManager->getModuleInstance('Navigation');
+        $module = $app->moduleManager->get('Navigation');
 
         $response = new HttpResponse();
         $request  = new HttpRequest();

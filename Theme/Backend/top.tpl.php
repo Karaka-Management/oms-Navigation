@@ -19,7 +19,7 @@ use Modules\Navigation\Models\NavigationType;
  */
 if (isset($this->nav[NavigationType::TOP])) : ?>
     <ul id="t-nav" role="list">
-        <?php $unread = $this->data['unread'];
+        <?php
         foreach ($this->nav[NavigationType::TOP] as $key => $parent) :
         foreach ($parent as $id => $link) : ?>
         <li><a
@@ -30,12 +30,12 @@ if (isset($this->nav[NavigationType::TOP])) : ?>
                 <?php if (isset($link['nav_icon'])) : ?>
                     <i class="g-icon infoIcon">
                         <?= $this->printHtml($link['nav_icon']); ?>
-                        <?php if (isset($unread[$link['nav_from']]) && $unread[$link['nav_from']] > 0) : ?>
-                            <span class="badge"><?= $unread[$link['nav_from']]; ?></span>
+                        <?php if (isset($this->data['unread'][$link['nav_from']]) && $this->data['unread'][$link['nav_from']] > 0) : ?>
+                            <span class="badge"><?= \strlen((string) $this->data['unread'][$link['nav_from']]) >= 3 ? '∞' : $this->data['unread'][$link['nav_from']]; ?></span>
                         <?php endif; ?>
                     </i>
                 <?php endif; ?>
-                <span class="link"><?= $this->getHtml($link['nav_name'], 'Navigation'); ?><span></a>
+                <span class="link"><?= empty($link['nav_name']) ? '' : $this->getHtml($link['nav_name'], 'Navigation'); ?><span></a>
         <?php endforeach; endforeach; ?>
     </ul>
 <?php endif;

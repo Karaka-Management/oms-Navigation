@@ -36,7 +36,11 @@ if (isset($this->nav[NavigationType::SIDE])) : ?>
                             if ($link['nav_parent'] === $key) :
                                 $uri = \phpOMS\Uri\UriFactory::build($link['nav_uri']);
                             ?>
-                                <li><a href="<?= $uri; ?>"><?= $this->getHtml($link['nav_name'], 'Navigation'); ?></a>
+                                <li><a href="<?= $uri; ?>"><?= $this->getHtml($link['nav_name'], 'Navigation'); ?>
+                                    <?php if (isset($this->data['unread'][$link['nav_from']]) && $this->data['unread'][$link['nav_from']] > 0) : ?>
+                                        <span class="badge"><?= \strlen((string) $this->data['unread'][$link['nav_from']]) >= 3 ? '∞' : $this->data['unread'][$link['nav_from']]; ?></span>
+                                    <?php endif; ?>
+                                    </a>
                             <?php endif;
                         endforeach;
                     endif; ?>
