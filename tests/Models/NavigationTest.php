@@ -23,6 +23,7 @@ use phpOMS\Utils\TestUtils;
 /**
  * @internal
  */
+#[\PHPUnit\Framework\Attributes\CoversClass(\Modules\Navigation\Models\Navigation::class)]
 final class NavigationTest extends \PHPUnit\Framework\TestCase
 {
     private Navigation $nav;
@@ -39,19 +40,13 @@ final class NavigationTest extends \PHPUnit\Framework\TestCase
         $this->nav = Navigation::getInstance($request, $account, $GLOBALS['dbpool'], 1, 2);
     }
 
-    /**
-     * @covers \Modules\Navigation\Models\Navigation
-     * @group module
-     */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testDefault() : void
     {
         self::assertTrue(!empty($this->nav->getNav()));
     }
 
-    /**
-     * @covers \Modules\Navigation\Models\Navigation
-     * @group module
-     */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testGetInstanceInvalidHashes() : void
     {
         TestUtils::setMember($this->nav, 'instance', null);

@@ -19,31 +19,23 @@ use Modules\Navigation\Models\NullNavElement;
 /**
  * @internal
  */
+#[\PHPUnit\Framework\Attributes\CoversClass(\Modules\Navigation\Models\NullNavElement::class)]
 final class NullNavElementTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @covers \Modules\Navigation\Models\NullNavElement
-     * @group module
-     */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testNull() : void
     {
         self::assertInstanceOf('\Modules\Navigation\Models\NavElement', new NullNavElement());
     }
 
-    /**
-     * @covers \Modules\Navigation\Models\NullNavElement
-     * @group module
-     */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testId() : void
     {
         $null = new NullNavElement(2);
         self::assertEquals(2, $null->id);
     }
 
-    /**
-     * @covers \Modules\Navigation\Models\NullNavElement
-     * @group module
-     */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testJsonSerialize() : void
     {
         $null = new NullNavElement(2);

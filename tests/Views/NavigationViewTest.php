@@ -19,6 +19,7 @@ use Modules\Navigation\Views\NavigationView;
 /**
  * @internal
  */
+#[\PHPUnit\Framework\Attributes\CoversClass(\Modules\Navigation\Views\NavigationView::class)]
 final class NavigationViewTest extends \PHPUnit\Framework\TestCase
 {
     private NavigationView $view;
@@ -31,10 +32,7 @@ final class NavigationViewTest extends \PHPUnit\Framework\TestCase
         $this->view = new NavigationView();
     }
 
-    /**
-     * @covers \Modules\Navigation\Views\NavigationView
-     * @group module
-     */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testDefault() : void
     {
         self::assertEquals(0, $this->view->getNavId());
@@ -42,30 +40,21 @@ final class NavigationViewTest extends \PHPUnit\Framework\TestCase
         self::assertEquals(0, $this->view->parent);
     }
 
-    /**
-     * @covers \Modules\Navigation\Views\NavigationView
-     * @group module
-     */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testNavIdInputOutput() : void
     {
         $this->view->setNavId(2);
         self::assertEquals(2, $this->view->getNavId());
     }
 
-    /**
-     * @covers \Modules\Navigation\Views\NavigationView
-     * @group module
-     */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testNavInputOutput() : void
     {
         $this->view->setNav([1, 2, 3]);
         self::assertEquals([1, 2, 3], $this->view->getNav());
     }
 
-    /**
-     * @covers \Modules\Navigation\Views\NavigationView
-     * @group module
-     */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testParentInputOutput() : void
     {
         $this->view->parent = 4;

@@ -22,6 +22,7 @@ use phpOMS\Uri\HttpUri;
 /**
  * @internal
  */
+#[\PHPUnit\Framework\Attributes\CoversClass(\Modules\Navigation\Models\Navigation::class)]
 final class AdminTest extends \PHPUnit\Framework\TestCase
 {
     protected const NAME = 'Navigation';
@@ -33,11 +34,10 @@ final class AdminTest extends \PHPUnit\Framework\TestCase
     /**
      * Test if navigation model works correct
      *
-     * @covers \Modules\Navigation\Models\Navigation
      *
-     * @group final
-     * @group module
      */
+    #[\PHPUnit\Framework\Attributes\Group('final')]
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testNavigationElements() : void
     {
         $request = new HttpRequest(new HttpUri('http://127.0.0.1/en/backend'));

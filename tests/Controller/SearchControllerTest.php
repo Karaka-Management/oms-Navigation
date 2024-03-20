@@ -33,10 +33,10 @@ use phpOMS\Router\WebRouter;
 use phpOMS\Utils\TestUtils;
 
 /**
- * @testdox Modules\Navigation\tests\Controller\SearchControllerTest: Admin api controller
- *
  * @internal
  */
+#[\PHPUnit\Framework\Attributes\CoversClass(\Modules\Navigation\Controller\SearchController::class)]
+#[\PHPUnit\Framework\Attributes\TestDox('Modules\Navigation\tests\Controller\SearchControllerTest: Admin api controller')]
 final class SearchControllerTest extends \PHPUnit\Framework\TestCase
 {
     protected ApplicationAbstract $app;
@@ -90,10 +90,7 @@ final class SearchControllerTest extends \PHPUnit\Framework\TestCase
         TestUtils::setMember($this->module, 'app', $this->app);
     }
 
-    /**
-     * @covers \Modules\Navigation\Controller\SearchController
-     * @group module
-     */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testGotoSearch() : void
     {
         $response = new HttpResponse();
@@ -108,10 +105,7 @@ final class SearchControllerTest extends \PHPUnit\Framework\TestCase
         self::assertInstanceOf(Redirect::class, $response->getData(''));
     }
 
-    /**
-     * @covers \Modules\Navigation\Controller\SearchController
-     * @group module
-     */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testInvalidGotoSearch() : void
     {
         $response = new HttpResponse();
