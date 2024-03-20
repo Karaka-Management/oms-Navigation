@@ -91,7 +91,7 @@ final class SearchControllerTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers Modules\Navigation\Controller\SearchController
+     * @covers \Modules\Navigation\Controller\SearchController
      * @group module
      */
     public function testGotoSearch() : void
@@ -109,7 +109,7 @@ final class SearchControllerTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers Modules\Navigation\Controller\SearchController
+     * @covers \Modules\Navigation\Controller\SearchController
      * @group module
      */
     public function testInvalidGotoSearch() : void

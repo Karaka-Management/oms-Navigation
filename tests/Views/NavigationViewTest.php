@@ -32,7 +32,7 @@ final class NavigationViewTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers Modules\Navigation\Views\NavigationView
+     * @covers \Modules\Navigation\Views\NavigationView
      * @group module
      */
     public function testDefault() : void
@@ -43,7 +43,7 @@ final class NavigationViewTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers Modules\Navigation\Views\NavigationView
+     * @covers \Modules\Navigation\Views\NavigationView
      * @group module
      */
     public function testNavIdInputOutput() : void
@@ -53,7 +53,7 @@ final class NavigationViewTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers Modules\Navigation\Views\NavigationView
+     * @covers \Modules\Navigation\Views\NavigationView
      * @group module
      */
     public function testNavInputOutput() : void
@@ -63,7 +63,7 @@ final class NavigationViewTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers Modules\Navigation\Views\NavigationView
+     * @covers \Modules\Navigation\Views\NavigationView
      * @group module
      */
     public function testParentInputOutput() : void

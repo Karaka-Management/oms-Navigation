@@ -40,7 +40,7 @@ final class NavigationTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers Modules\Navigation\Models\Navigation
+     * @covers \Modules\Navigation\Models\Navigation
      * @group module
      */
     public function testDefault() : void
@@ -49,7 +49,7 @@ final class NavigationTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers Modules\Navigation\Models\Navigation
+     * @covers \Modules\Navigation\Models\Navigation
      * @group module
      */
     public function testGetInstanceInvalidHashes() : void

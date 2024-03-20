@@ -33,7 +33,7 @@ final class AdminTest extends \PHPUnit\Framework\TestCase
     /**
      * Test if navigation model works correct
      *
-     * @covers Modules\Navigation\Models\Navigation
+     * @covers \Modules\Navigation\Models\Navigation
      *
      * @group final
      * @group module
