@@ -17,7 +17,7 @@ use phpOMS\Account\PermissionType;
 use phpOMS\Router\RouteVerb;
 
 return [
-    '^.*/admin/module/settings\?id=Navigation&nav=.*?$' => [
+    '^/admin/module/settings\?id=Navigation&nav=.*?$' => [
         [
             'dest'       => '\Modules\Navigation\Controller\BackendController:viewModuleNavElementSettings',
             'verb'       => RouteVerb::GET,
@@ -28,7 +28,7 @@ return [
             ],
         ],
     ],
-    '^.*/admin/module/navigation/list(\?.*$|$)' => [
+    '^/admin/module/navigation/list(\?.*$|$)' => [
         [
             'dest'       => '\Modules\Navigation\Controller\BackendController:viewModuleNavigationList',
             'verb'       => RouteVerb::GET,
