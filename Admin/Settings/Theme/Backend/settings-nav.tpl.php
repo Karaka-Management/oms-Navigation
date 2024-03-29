@@ -29,7 +29,7 @@ echo $this->data['nav']->render(); ?>
             <div class="portlet-body">
                 <div class="form-group">
                     <label for="iId"><?= $this->getHtml('Id'); ?></label>
-                    <input id="iId" name="id" type="text" value="<?= $this->printHtml((string) $nav->id); ?>">
+                    <input id="iId" name="id" type="text" value="<?= $nav->id; ?>">
                 </div>
 
                 <div class="form-group">
@@ -186,11 +186,11 @@ echo $this->data['nav']->render(); ?>
                 <?php $count = 0;
                 foreach ($routes as $route => $data) : ++$count; ?>
                     <tr tabindex="0">
-                        <td><<?= $this->printHtml($data['app'] ?? ''); ?>
-                        <td><<?= $this->printHtml($data['module'] ?? ''); ?>
-                        <td><<?= $this->printHtml($route); ?>
-                        <td><<?= $this->printHtml($data['dest'] ?? ''); ?>
-                        <td><<?= $this->printHtml($data['verb'] ?? ''); ?>
+                        <td><?= $this->printHtml($data['app'] ?? ''); ?>
+                        <td><?= $this->printHtml($data['module'] ?? ''); ?>
+                        <td><?= $this->printHtml($route); ?>
+                        <td><?= $this->printHtml($data['dest'] ?? ''); ?>
+                        <td><?= $this->printHtml($data['verb'] ?? ''); ?>
                 <?php endforeach; ?>
                 <?php if ($count === 0) : ?>
                     <tr><td colspan="8" class="empty"><?= $this->getHtml('Empty', '0', '0'); ?>

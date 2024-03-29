@@ -12,6 +12,8 @@
  */
 declare(strict_types=1);
 
+use Modules\Navigation\Models\LinkStatus;
+
 /**
  * @var \phpOMS\Views\View $this
  */
@@ -96,7 +98,7 @@ echo $this->data['nav']->render();
                     foreach ($navs as $nav) : ++$c; ?>
                     <tr>
                         <td><label class="checkbox" for="iActive-<?= $c; ?>">
-                                <input id="iActive-<?= $c; ?>" type="checkbox" name="active_route" value="<?= $this->printHtml($nav->uri); ?>"<?= true ? ' checked' : ''; ?>>
+                                <input id="iActive-<?= $c; ?>" type="checkbox" name="active_route" value="<?= $this->printHtml($nav->uri); ?>"<?= $nav->status === LinkStatus::ACTIVE ? ' checked' : ''; ?>>
                                 <span class="checkmark"></span>
                             </label>
                         <td><?= $this->printHtml($apps[$nav->app]?->name); ?>
