@@ -180,12 +180,12 @@ final class BackendController extends Controller
         $id = $request->getDataString('id') ?? '';
 
         /** @var \Model\Setting[] $settings */
-        $settings = SettingMapper::getAll()->where('module', $id)->execute();
+        $settings = SettingMapper::getAll()->where('module', $id)->executeGetArray();
         if (!empty($settings)) {
             $view->data['settings'] = \is_array($settings) ? $settings : [$settings];
         }
 
-        $navigation               = NavElementMapper::getAll()->execute();
+        $navigation               = NavElementMapper::getAll()->executeGetArray();
         $view->data['navigation'] = $navigation;
 
         $view->setTemplate('/Modules/' . static::NAME . '/Admin/Settings/Theme/Backend/settings');
@@ -245,7 +245,7 @@ final class BackendController extends Controller
         $activeNavElements  = $query->execute();
         $view->data['navs'] = $activeNavElements;
 
-        $apps               = AppMapper::getAll()->execute();
+        $apps               = AppMapper::getAll()->executeGetArray();
         $view->data['apps'] = $apps;
 
         return $view;
