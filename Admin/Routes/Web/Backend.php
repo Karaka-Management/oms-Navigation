@@ -21,6 +21,7 @@ return [
         [
             'dest'       => '\Modules\Navigation\Controller\BackendController:viewModuleNavElementSettings',
             'verb'       => RouteVerb::GET,
+            'active' => true,
             'permission' => [
                 'module' => BackendController::NAME,
                 'type'   => PermissionType::READ,
@@ -32,6 +33,7 @@ return [
         [
             'dest'       => '\Modules\Navigation\Controller\BackendController:viewModuleNavigationList',
             'verb'       => RouteVerb::GET,
+            'active' => true,
             'permission' => [
                 'module' => BackendController::NAME,
                 'type'   => PermissionType::READ,

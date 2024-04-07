@@ -17,7 +17,7 @@ namespace Modules\Navigation\Models;
 use phpOMS\DataStorage\Database\Mapper\DataMapperFactory;
 
 /**
- * Mapper class.
+ * Navelement mapper class.
  *
  * @package Modules\Navigation\Models
  * @license OMS License 2.0

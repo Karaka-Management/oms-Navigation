@@ -34,7 +34,7 @@ use phpOMS\Message\ResponseAbstract;
 final class ApiController extends Controller
 {
     /**
-     * Api method to create tag
+     * Api method to create navigation element
      *
      * @param RequestAbstract  $request  Request
      * @param ResponseAbstract $response Response
@@ -61,7 +61,7 @@ final class ApiController extends Controller
     }
 
     /**
-     * Validate tag create request
+     * Validate navigation element create request
      *
      * @param RequestAbstract $request Request
      *
@@ -80,7 +80,7 @@ final class ApiController extends Controller
     }
 
     /**
-     * Method to create tag from request.
+     * Method to create navigation element from request.
      *
      * @param RequestAbstract $request Request
      *
