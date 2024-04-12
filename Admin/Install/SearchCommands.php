@@ -21,6 +21,7 @@ return [
         [
             'dest'       => '\Modules\Navigation\Controller\SearchController:searchGoto',
             'verb'       => RouteVerb::ANY,
+            'active'     => true,
             'permission' => [
                 'module' => SearchController::NAME,
                 'type'   => PermissionType::READ,
