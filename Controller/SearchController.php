@@ -40,13 +40,17 @@ final class SearchController extends Controller
      * @param ResponseAbstract $response Response
      * @param array            $data     Generic data
      *
-     * @return void
+     * @return array
      *
      * @api
      *
+     * @performance Improve goto command to match
+     *      Use some alternative match parameter (maybe data-name)
+     *      https://github.com/Karaka-Management/oms-Navigation/issues/9
+     *
      * @since 1.0.0
      */
-    public function searchGoto(RequestAbstract $request, ResponseAbstract $response, array $data = []) : void
+    public function searchGoto(RequestAbstract $request, ResponseAbstract $response, array $data = []) : array
     {
         $this->loadLanguage($request, $response, $request->getDataString('app') ?? $this->app->appName);
 
@@ -83,16 +87,17 @@ final class SearchController extends Controller
             }
         }
 
-        $response->header->set('Content-Type', MimeType::M_JSON . '; charset=utf-8', true);
-
         if ($found === null || $found->uri === null) {
             $this->fillJsonResponse($request, $response, NotificationLevel::WARNING, 'Command', 'Unknown command "' . $search . '"', $search);
             $response->header->status = RequestStatusCode::R_400;
 
-            return;
+            return [];
         }
 
-        $response->set($request->uri->__toString(), new Redirect(UriFactory::build($found->uri)));
+        $response->header->status = RequestStatusCode::R_303;
+        $response->header->set('Location', UriFactory::build('/' . $found->uri));
+
+        return [];
     }
 
     /**

@@ -17,7 +17,7 @@ use phpOMS\Account\PermissionType;
 use phpOMS\Router\RouteVerb;
 
 return [
-    '^:goto (\?.*$|$)' => [
+    '^:goto (.+)$' => [
         [
             'dest'       => '\Modules\Navigation\Controller\SearchController:searchGoto',
             'verb'       => RouteVerb::ANY,
