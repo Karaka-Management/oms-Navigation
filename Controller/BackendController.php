@@ -66,6 +66,36 @@ final class BackendController extends Controller
     }
 
     /**
+     * Create mid navigation
+     *
+     * @param int              $pageId   Page/parent Id for navigation
+     * @param RequestAbstract  $request  Request
+     * @param ResponseAbstract $response Response
+     *
+     * @return NavigationView
+     *
+     * @since 1.0.0
+     * @codeCoverageIgnore
+     */
+    public function createNavigationMidSub(int $pageId, RequestAbstract $request, ResponseAbstract $response) : NavigationView
+    {
+        $nav = Navigation::getInstance(
+            $request,
+            $this->app->accountManager->get($request->header->account),
+            $this->app->dbPool,
+            $this->app->unitId,
+            $this->app->appId
+        );
+
+        $navView = new NavigationView($this->app->l11nManager, $request, $response);
+        $navView->setTemplate('/Modules/Navigation/Theme/Backend/mid-sub');
+        $navView->nav    = $nav->nav;
+        $navView->parent = $pageId;
+
+        return $navView;
+    }
+
+    /**
      * Get basic navigation view
      *
      * @param RequestAbstract  $request  Request
